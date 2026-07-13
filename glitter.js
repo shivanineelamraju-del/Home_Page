@@ -1,49 +1,36 @@
 /* =====================================================
-   HERO BACKGROUND VIDEO
-   Replaces the canvas placeholder (#glitterCanvas) with a
-   looping, muted, autoplaying <video> using the same
-   positioning/sizing CSS rules (.glitter-canvas), so no
-   HTML or CSS edits are needed elsewhere.
+   HERO BACKGROUND IMAGE
+   Replaces the placeholder element (#glitterCanvas) with a
+   static <img> using "animated-background" as its class.
+   Critical positioning/sizing styles are also set inline so
+   it displays correctly even before/without a matching CSS
+   rule — see the note in style.css for the recommended rule.
    ===================================================== */
 (function(){
-  const canvas = document.getElementById("glitterCanvas");
-  if(!canvas) return;
+  const placeholder = document.getElementById("glitterCanvas");
+  if(!placeholder) return;
 
-  const VIDEO_SRC = "web-bg-animation.mp4"; // place this file alongside index.html
+  const IMAGE_SRC = "web-bg.jpg"; // place this file alongside index.html
 
-  const video = document.createElement("video");
-  video.id = "glitterCanvas"; // keep the id in case other code/CSS targets it
-  video.className = canvas.className; // reuse .glitter-canvas positioning/sizing rules
-  video.src = VIDEO_SRC;
-  video.autoplay = true;
-  video.loop = true;
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-  video.setAttribute("aria-hidden", "true");
-  video.style.objectFit = "cover";
+  const img = document.createElement("img");
+  img.id = "glitterCanvas"; // keep the id in case other code/CSS targets it
+  img.className = "animated-background";
+  img.src = IMAGE_SRC;
+  img.alt = "";
+  img.setAttribute("aria-hidden", "true");
 
-  canvas.replaceWith(video);
-
-  // Autoplay can still be blocked in some browsers even when muted;
-  // this retries once the video's data is ready.
-  video.addEventListener("loadeddata", () => {
-    video.play().catch(() => { /* ignore — video will just sit on first frame */ });
+  // Inline fallback so it renders correctly even if the stylesheet
+  // hasn't been updated with a .animated-background rule yet.
+  Object.assign(img.style, {
+    position: "absolute",
+    inset: "0",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: "0",
+    pointerEvents: "none",
+    display: "block"
   });
 
-  // Pause the video when the hero scrolls out of view (saves CPU/battery),
-  // resume when it's back — the CSS reduced-motion rule on .glitter-canvas
-  // (display:none) already handles prefers-reduced-motion users.
-  if("IntersectionObserver" in window){
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.01 });
-    io.observe(video);
-  }
+  placeholder.replaceWith(img);
 })();
