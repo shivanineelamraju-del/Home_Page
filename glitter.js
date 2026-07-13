@@ -14,7 +14,7 @@
 
   const img = document.createElement("img");
   img.id = "glitterCanvas"; // keep the id in case other code/CSS targets it
-  img.className = "animated-background";
+  img.className = "animated-background.pulse";
   img.src = IMAGE_SRC;
   img.alt = "";
   img.setAttribute("aria-hidden", "true");
