@@ -5,7 +5,7 @@
    This file only handles interactivity: the tab/"page"
    switching, the domains dropdown, the events calendar,
    and the projects filter.
-   ===================================================== */
+   ==================================================== */
 
 /* ---------------------------------------------------
    1. PAGE SWITCHING (tabs that behave like pages)
