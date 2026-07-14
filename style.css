@@ -229,7 +229,6 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 }
 .cube-face{
   position:absolute; inset:0;
-  border-radius:18px;
   display:flex; align-items:center; justify-content:center;
   -webkit-backface-visibility:hidden;
   backface-visibility:hidden;
