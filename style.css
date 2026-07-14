@@ -164,7 +164,7 @@ button{font-family:inherit; cursor:pointer;}
   display:flex; align-items:center; gap:10px; margin-bottom:14px; text-transform:uppercase;
 }
 .hero-title{font-size:clamp(1.7rem, 3.4vw, 2.7rem); letter-spacing:-0.01em; color:var(--ink);}
-.hero-accent{color:var(--magenta); font-family:var(--font-accent); font-style:italic; font-weight:500;}
+.hero-accent{color:var(--ink); font-family:var(--font-accent); font-style:italic; font-weight:500;}
 .hero-sub{font-size:1.05rem; max-width:46ch; margin-top:18px;}
 .hero-cta{display:flex; gap:12px; margin-top:8px; flex-wrap:wrap;}
 .hero-stat-row{display:flex; gap:34px; margin-top:38px;}
