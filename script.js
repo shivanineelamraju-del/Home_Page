@@ -45,6 +45,27 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ---------------------------------------------------
+   1b. THEME TOGGLE — dark (navy bg / white text) vs
+   light (white bg / navy text). Persists via localStorage;
+   the inline <head> script sets the initial attribute
+   before paint so there's no flash of the wrong theme.
+   --------------------------------------------------- */
+const themeToggle = document.getElementById("themeToggle");
+function currentTheme(){
+  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
+function setTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("acmw-theme", theme);
+  themeToggle.setAttribute("aria-pressed", theme === "dark");
+  themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+setTheme(currentTheme()); // sync button state with whatever the head script chose
+themeToggle.addEventListener("click", () => {
+  setTheme(currentTheme() === "dark" ? "light" : "dark");
+});
+
+/* ---------------------------------------------------
    2. NAV — mobile toggle + Domains dropdown
    --------------------------------------------------- */
 const navToggle = document.getElementById("navToggle");
