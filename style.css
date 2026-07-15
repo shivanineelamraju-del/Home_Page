@@ -4,8 +4,8 @@
    accents on a deep-navy + white base.
    ===================================================== */
 :root{
-  --ink:        #0A1730;
-  --ink-soft:   #142A4E;
+  --ink:        #12327A;
+  --ink-soft:   #1B45A8;
   --paper:      #FFFFFF;
   --paper-tint: #EAF3FF;
   --surface:    #FFFFFF;
@@ -18,6 +18,10 @@
   --line:       #DCE7F5;
   --line-dark:  rgba(255,255,255,0.14);
   --shadow:     rgba(11,11,13,0.09);
+
+  --watercolor-a: #1E5AFF;
+  --watercolor-b: #0B3D91;
+  --watercolor-c: #4FC3F7;
 
   /* Fixed-dark tokens: chips like the terminal, footer, and fest
      cards are designed as dark navy panels with light text baked
@@ -47,6 +51,10 @@ html[data-theme="dark"]{
   --muted:      #93A3C6;
   --line:       rgba(255,255,255,0.14);
   --shadow:     rgba(0,0,0,0.35);
+
+  --watercolor-a: rgba(255,255,255,0.9);
+  --watercolor-b: rgba(255,255,255,0.65);
+  --watercolor-c: rgba(255,255,255,0.5);
 }
 html{transition:background 0.25s ease;}
 body{transition:background 0.25s ease, color 0.25s ease;}
@@ -175,10 +183,47 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 
 /* ---------- hero ---------- */
 .hero{
+  position:relative;
   max-width:840px; margin:0 auto; padding:56px 24px;
   min-height:calc(100vh - 68px);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
 }
+.hero-watercolor{
+  position:absolute;
+  top:0; left:50%;
+  width:100vw; height:100%;
+  transform:translateX(-50%);
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.hero-watercolor .blob{
+  position:absolute;
+  border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;
+  filter:blur(60px);
+  opacity:0.5;
+  animation:blobDrift 20s ease-in-out infinite;
+}
+.blob-1{
+  width:440px; height:440px; top:-8%; left:12%;
+  background:radial-gradient(circle, var(--watercolor-a) 0%, transparent 70%);
+}
+.blob-2{
+  width:380px; height:380px; bottom:-10%; right:14%;
+  background:radial-gradient(circle, var(--watercolor-b) 0%, transparent 70%);
+  animation-duration:24s; animation-delay:-6s;
+}
+.blob-3{
+  width:320px; height:320px; top:34%; right:30%;
+  background:radial-gradient(circle, var(--watercolor-c) 0%, transparent 70%);
+  animation-duration:28s; animation-delay:-12s;
+}
+@keyframes blobDrift{
+  0%,100%{transform:translate(0,0) scale(1); border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;}
+  33%{transform:translate(24px,-18px) scale(1.08); border-radius:58% 42% 40% 60% / 60% 55% 45% 40%;}
+  66%{transform:translate(-18px,20px) scale(0.94); border-radius:48% 52% 55% 45% / 45% 60% 40% 55%;}
+}
+.hero-inner{position:relative; z-index:1;}
 @keyframes heroRise{
   from{opacity:0; transform:translateY(26px);}
   to{opacity:1; transform:translateY(0);}
