@@ -18,11 +18,10 @@
   --line:       #DCE7F5;
   --line-dark:  rgba(255,255,255,0.14);
   --shadow:     rgba(11,11,13,0.09);
-  --grad-1:     #FFFFFF;
-  --grad-2:     #EAF3FF;
-  --grad-3:     #BFE0FF;
-  --grad-4:     #DCE9FF;
-  --accent-pink: rgba(255,79,166,0.3);
+  --grad-1:     #123FBF;
+  --grad-2:     #6D28D9;
+  --grad-3:     #C0268C;
+  --grad-4:     #7C3AED;
 
   /* Fixed-dark tokens: chips like the terminal, footer, and fest
      cards are designed as dark navy panels with light text baked
@@ -52,11 +51,10 @@ html[data-theme="dark"]{
   --muted:      #93A3C6;
   --line:       rgba(255,255,255,0.14);
   --shadow:     rgba(0,0,0,0.35);
-  --grad-1:     #060D1E;
-  --grad-2:     #0A1730;
-  --grad-3:     #12275A;
-  --grad-4:     #0A1730;
-  --accent-pink: rgba(255,79,166,0.22);
+  --grad-1:     #6EA8FF;
+  --grad-2:     #B794F6;
+  --grad-3:     #F472B6;
+  --grad-4:     #C4B5FD;
 }
 html{transition:background 0.25s ease;}
 body{transition:background 0.25s ease, color 0.25s ease;}
@@ -190,24 +188,18 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
   min-height:calc(100vh - 68px);
   display:flex; align-items:center; justify-content:center;
 }
-.hero-bg{
-  position:absolute; inset:0;
-  z-index:0;
-  overflow:hidden;
+.site-bg{
+  position:fixed; inset:0;
+  z-index:-1;
   pointer-events:none;
-  background-image:
-    radial-gradient(circle, var(--accent-pink) 0%, transparent 55%),
-    linear-gradient(120deg, var(--grad-1), var(--grad-2), var(--grad-3), var(--grad-4), var(--grad-1));
-  background-size:55% 55%, 320% 320%;
-  background-position:70% 30%, 0% 50%;
-  animation:heroGradientFlow 18s ease-in-out infinite;
+  background:linear-gradient(120deg, var(--grad-1), var(--grad-2), var(--grad-3), var(--grad-4), var(--grad-1));
+  background-size:400% 400%;
+  animation:heroGradientFlow 24s ease-in-out infinite;
 }
 @keyframes heroGradientFlow{
-  0%{background-position:70% 30%, 0% 50%;}
-  25%{background-position:58% 48%, 50% 30%;}
-  50%{background-position:38% 62%, 100% 50%;}
-  75%{background-position:55% 38%, 50% 70%;}
-  100%{background-position:70% 30%, 0% 50%;}
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 .hero-inner{
   position:relative; z-index:1;
@@ -547,7 +539,6 @@ body.edit-mode .card-edit-controls{display:flex;}
   .hero-copy{text-align:center;}
   .hero-mission, .hero-vision{margin-left:auto; margin-right:auto;}
   .hero-visual{order:-1;}
-  .hero-bg{background-position:50% 40%, 0% 50%;}
   .about-grid, .events-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr; gap:32px;}
   .footer-links{grid-template-columns:1fr 1fr;}
