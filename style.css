@@ -176,7 +176,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 /* ---------- hero ---------- */
 .hero{
   max-width:840px; margin:0 auto; padding:56px 24px;
-  min-height:64vh;
+  min-height:calc(100vh - 68px);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
 }
 @keyframes heroRise{
