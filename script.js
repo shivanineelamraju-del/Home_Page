@@ -5,7 +5,7 @@
    This file only handles interactivity: the tab/"page"
    switching, the domains dropdown, the events calendar,
    and the projects filter.
-   ==================================================== */
+   ===================================================== */
 
 /* ---------------------------------------------------
    1. PAGE SWITCHING (tabs that behave like pages)
@@ -161,26 +161,39 @@ document.getElementById("year").textContent = new Date().getFullYear();
 /* ---------------------------------------------------
    3b. SCROLL-REVEAL — fades/slides section titles and
    cards into view as the user scrolls to them.
+   Testimonials and senate cards replay on every pass;
+   everything else reveals once and stays put.
    --------------------------------------------------- */
-const revealTargets = document.querySelectorAll(
-  ".section-title, .page-hero-title, .quicklink-card, .project-card, .testimonial-card, .senate-card, .fest-card"
+const revealOnceTargets = document.querySelectorAll(
+  ".section-title, .page-hero-title, .project-card, .fest-card"
 );
-revealTargets.forEach((el, i) => {
+const revealReplayTargets = document.querySelectorAll(
+  ".testimonial-card, .senate-card"
+);
+const allRevealTargets = [...revealOnceTargets, ...revealReplayTargets];
+allRevealTargets.forEach((el, i) => {
   el.classList.add("reveal");
   el.style.transitionDelay = (i % 6) * 0.07 + "s";
 });
 if("IntersectionObserver" in window){
-  const revealObserver = new IntersectionObserver((entries) => {
+  const revealOnceObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
         entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+        revealOnceObserver.unobserve(entry.target);
       }
     });
   }, {threshold:0.15});
-  revealTargets.forEach(el => revealObserver.observe(el));
+  revealOnceTargets.forEach(el => revealOnceObserver.observe(el));
+
+  const revealReplayObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("is-visible", entry.isIntersecting);
+    });
+  }, {threshold:0.15});
+  revealReplayTargets.forEach(el => revealReplayObserver.observe(el));
 } else {
-  revealTargets.forEach(el => el.classList.add("is-visible"));
+  allRevealTargets.forEach(el => el.classList.add("is-visible"));
 }
 
 document.querySelectorAll(".domain-panel").forEach(panel => {
