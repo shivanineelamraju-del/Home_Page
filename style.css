@@ -226,8 +226,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
   opacity:0; animation:heroRise 0.75s ease 0.2s forwards;
 }
 .hero-tagline{
-  font-family:var(--font-mono); font-size:1rem; letter-spacing:0.04em; text-transform:uppercase;
-  color:var(--magenta); font-weight:600; margin:16px 0 0;
+  font-family:var(--font-mono); font-size:1.35rem; letter-spacing:0.04em; text-transform:uppercase;
+  color:var(--ink); font-weight:600; margin:16px 0 0;
   opacity:0; animation:heroRise 0.7s ease 0.4s forwards;
 }
 .hero-mission{
@@ -240,6 +240,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
   opacity:0; animation:heroRise 0.7s ease 0.74s forwards;
 }
 .hero-vision strong{color:var(--ink); font-family:var(--font-display); font-weight:600;}
+.hero-learn-more{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--font-mono); font-size:0.9rem; font-weight:600;
+  color:var(--magenta); text-decoration:none; margin-top:20px;
+  opacity:0; animation:heroRise 0.7s ease 0.9s forwards;
+}
+.hero-learn-more:hover{color:var(--violet);}
 .hero-accent{color:var(--magenta); font-family:var(--font-accent); font-style:italic; font-weight:500;}
 .hero-visual{
   display:flex; align-items:center; justify-content:flex-end;
@@ -540,7 +547,7 @@ body.edit-mode .card-edit-controls{display:flex;}
   .hero{padding-top:48px;}
   .hero-inner{grid-template-columns:1fr; text-align:center; gap:20px;}
   .hero-copy{text-align:center;}
-  .hero-mission, .hero-vision{margin-left:auto; margin-right:auto;}
+  .hero-mission, .hero-vision, .hero-learn-more{margin-left:auto; margin-right:auto;}
   .hero-visual{order:-1;}
   .about-grid, .events-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr; gap:32px;}
