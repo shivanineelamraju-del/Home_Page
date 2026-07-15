@@ -191,7 +191,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 }
 .hero-title{font-size:clamp(2.1rem, 4.2vw, 3.4rem); letter-spacing:-0.01em; color:var(--ink);}
 .hero-accent{color:var(--magenta); font-family:var(--font-accent); font-style:italic; font-weight:500;}
-.hero-logo-wrap{margin:48px 0 10px; opacity:1; animation:none;}
+.hero-logo-wrap{margin:0 0 10px; opacity:1; animation:none;}
 
 .hero-logo-scene{
   width:fit-content;
