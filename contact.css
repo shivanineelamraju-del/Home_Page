@@ -1,0 +1,183 @@
+/* =====================================================
+   ACM-W BPHC — Contact Us page-specific styles
+   Centered, responsive, and dynamic theme switching
+   ===================================================== */
+
+/* ---------- centered hero (contact page only) ---------- */
+.page-hero {
+  text-align: left;
+}
+.page-hero .eyebrow {
+  justify-content: left;
+}
+.page-hero-sub {
+  margin-right: auto;
+}
+
+/* tighten the gap between the hero and the terminal card
+   (overrides style.css's generic .section top padding,
+   scoped here since contact.css only loads on this page) */
+.page-hero {
+  padding-bottom: 16px;
+}
+main > .section {
+  padding-top: 16px;
+}
+
+/* Theme Variables local to Contact page */
+:root {
+  --term-bg-soft: #f4f6fa;
+  --term-bg-dark: #e8ecf5;
+  --term-text: #1a233a;
+  --term-path: #5c6e91;
+  --term-border: #cbd5e1;
+  --term-row-bg: #ffffff;
+  --term-row-text: #0f172a;
+  --term-arrow: #64748b;
+  --term-icon-bg: rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="dark"] {
+  --term-bg-soft: var(--navy-fixed-soft);
+  --term-bg-dark: var(--navy-fixed);
+  --term-text: #D9E4FF;
+  --term-path: #93A3C6;
+  --term-border: var(--line-dark);
+  --term-row-bg: var(--navy-fixed);
+  --term-row-text: #ffffff;
+  --term-arrow: #93A3C6;
+  --term-icon-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- contact layout ---------- */
+.contact-layout {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+}
+
+/* ---------- terminal contact card ---------- */
+.contact-terminal {
+  background: var(--term-bg-soft);
+  border: 1px solid var(--term-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  max-width: 680px; /* Gives it an optimal wide width when centered */
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.terminal-head {
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  padding: 13px 18px;
+  background: var(--term-bg-dark);
+  border-bottom: 1px solid var(--term-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.terminal-head span { width: 10px; height: 10px; border-radius: 50%; }
+.terminal-head span:nth-child(1) { background: #ff6060; }
+.terminal-head span:nth-child(2) { background: var(--amber); }
+.terminal-head span:nth-child(3) { background: var(--teal); }
+.terminal-head code {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--term-path);
+  transition: color 0.3s ease;
+}
+
+.terminal-body { padding: 26px 24px 28px; }
+
+.term-line {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--term-text);
+  margin: 0 0 18px;
+  transition: color 0.3s ease;
+}
+.term-line .prompt { color: var(--amber); margin-right: 6px; }
+
+.contact-list {
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-row a {
+  display: flex; 
+  align-items: center; 
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--term-border);
+  border-radius: calc(var(--radius) - 4px);
+  background: var(--term-row-bg);
+  color: var(--term-row-text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease, color 0.3s ease;
+}
+
+.contact-row a:hover,
+.contact-row a:focus-visible {
+  border-color: var(--magenta);
+  background: var(--term-bg-soft);
+  transform: translateX(4px);
+  outline: none;
+}
+.contact-row a:focus-visible { box-shadow: 0 0 0 2px var(--magenta); }
+
+.contact-icon {
+  flex: 0 0 auto;
+  width: 36px; 
+  height: 36px;
+  border-radius: 10px;
+  background: var(--term-icon-bg);
+  color: var(--amber);
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+.contact-icon svg { width: 19px; height: 19px; }
+
+.contact-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.contact-key {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.contact-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.contact-arrow {
+  margin-left: auto;
+  color: var(--term-arrow);
+  font-size: 1rem;
+  flex: 0 0 auto;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.contact-row a:hover .contact-arrow {
+  color: var(--magenta);
+  transform: translate(2px,-2px);
+}
+
+.term-hint { margin: 4px 0 0; min-height: 18px; color: var(--term-path); transition: color 0.3s ease; }
+
+/* copy feedback state for the email row */
+.contact-row a.is-copied { border-color: var(--violet); background: var(--teal); color: #fff; }
+.contact-row a.is-copied .contact-arrow { color: var(--amber); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 480px){
+  .contact-row a { padding: 14px; gap: 12px; }
+  .contact-value { font-size: 0.88rem; }
+}
