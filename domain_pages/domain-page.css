@@ -1,0 +1,122 @@
+/* =====================================================
+   ACM-W BPHC — domain subject-page components
+   (Resources, Project flip cards, Mentors, Study page)
+   Loaded after style.css — reuses its tokens/variables
+   so this automatically matches light/dark theme.
+   ===================================================== */
+
+/* ---------- resources (topic cards) ---------- */
+.resources-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:22px;
+}
+.resource-card{
+  display:flex; flex-direction:column; gap:8px;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:26px; text-decoration:none; color:inherit;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.resource-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 34px var(--shadow);
+  border-color:var(--magenta);
+}
+.resource-icon{
+  font-family:var(--font-mono); font-size:0.72rem; color:var(--magenta);
+  text-transform:uppercase; letter-spacing:0.05em;
+}
+.resource-card h3{font-size:1.05rem;}
+.resource-card p{font-size:0.88rem; margin-bottom:0;}
+.resource-arrow{
+  margin-top:auto; font-family:var(--font-mono); font-size:0.8rem; color:var(--ink);
+  display:inline-flex; align-items:center; gap:6px;
+}
+.resource-card:hover .resource-arrow{color:var(--magenta);}
+
+/* ---------- project flip cards ---------- */
+.flip-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:26px;
+}
+.flip-card{
+  background:transparent;
+  perspective:1200px;
+  height:320px;
+}
+.flip-card-inner{
+  position:relative; width:100%; height:100%;
+  transition:transform 0.6s cubic-bezier(.22,1,.36,1);
+  transform-style:preserve-3d;
+  border-radius:var(--radius);
+  box-shadow:0 12px 30px var(--shadow);
+  cursor:pointer;
+}
+.flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{
+  position:absolute; inset:0;
+  -webkit-backface-visibility:hidden; backface-visibility:hidden;
+  border-radius:var(--radius); overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.flip-front{background:var(--surface); border:1px solid var(--line);}
+.flip-front img{width:100%; height:68%; object-fit:cover; display:block;}
+.flip-front h3{padding:16px 16px 0; font-size:1.05rem; color:var(--ink);}
+.flip-back{
+  background:var(--navy-fixed); color:#fff;
+  transform:rotateY(180deg);
+  padding:26px; justify-content:center;
+}
+.flip-back h4{color:#fff; font-size:1rem; margin-bottom:10px;}
+.flip-back p{color:#D9A9C2; font-size:0.86rem; margin:0;}
+.flip-card:focus-visible .flip-card-inner{outline:2px solid var(--violet); outline-offset:3px;}
+
+/* ---------- mentors ---------- */
+.mentors-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+}
+.mentor-card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; text-align:center;
+}
+.mentor-avatar{
+  width:64px; height:64px; border-radius:50%; margin:0 auto 12px;
+  background:linear-gradient(135deg,var(--magenta),var(--amber));
+  display:flex; align-items:center; justify-content:center; color:#fff;
+  font-family:var(--font-mono); font-weight:600; font-size:0.85rem;
+}
+.mentor-card h4{font-size:0.98rem; margin-bottom:4px;}
+.mentor-role{
+  font-family:var(--font-mono); font-size:0.72rem; color:var(--magenta);
+  text-transform:uppercase; letter-spacing:0.04em;
+}
+
+/* ---------- centered page-hero variant ----------
+   Used on domain pages that have no cube/illustration
+   next to the intro text (unlike the homepage's hero),
+   so the title + blurb are centered and widened to use
+   the full container instead of hugging the left side. */
+.page-hero--center{max-width:none; margin:0; padding-bottom:12px;}
+.page-hero--center .page-hero-sub{
+  max-width:70ch;
+}
+
+/* Resources is the first .section right after the hero on this
+   page — trim its top padding so the hero doesn't feel so far
+   from it (the default 84px top padding assumes a hero above it
+   with its own bottom padding already, which stacks up too much
+   space here). */
+#resources{padding-top:32px;}
+
+/* ---------- study material page ---------- */
+.study-content{max-width:70ch; margin:0 auto;}
+.study-content p{font-size:1rem; margin-bottom:1.2em;}
+.study-content h2{font-size:1.3rem; color:var(--ink); margin:1.6em 0 0.6em;}
+.study-content h2:first-child{margin-top:0;}
+
+@media (max-width: 480px){
+  .flip-card{height:360px;}
+}
