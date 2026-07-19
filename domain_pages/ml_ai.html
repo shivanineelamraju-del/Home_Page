@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning & AI · ACM-W BPHC</title>
+<meta name="description" content="ACM-W BPHC — Machine Learning & AI domain. Resources, projects and mentors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="domain-page.css">
+<script>
+  (function(){
+    var saved = localStorage.getItem("acmw-theme");
+    var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+</head>
+<body>
+<div class="site-bg" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="nav-wrap">
+    <div class="nav-right">
+      <a class="brand" href="index.html">
+        <span class="brand-suffix">ACM-W BPHC</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="toggle-knob">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 14.7A8.5 8.5 0 0 1 9.3 3.6a.5.5 0 0 0-.6-.7A9.5 9.5 0 1 0 21.1 15.3a.5.5 0 0 0-.7-.6Z"/></svg>
+          </span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#about" class="nav-link">About</a>
+
+      <div class="nav-dropdown">
+        <button class="nav-link nav-drop-btn" id="domainsBtn" aria-haspopup="true" aria-expanded="false">Domains <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+        <div class="dropdown-panel" id="domainsPanel">
+          <a href="index.html#domain-technical"><strong>Technical</strong><span>Workshops, project squads, open-source sprints and the tech behind chapter tools.</span></a>
+          <a href="index.html#domain-corporate"><strong>Corporate & Sponsorship</strong><span>Partnerships, sponsorships and industry connects that fund and power our events.</span></a>
+          <a href="index.html#domain-design"><strong>Design</strong><span>Visual identity, event collateral, posters, merchandise and everything on-brand.</span></a>
+          <a href="index.html#domain-content"><strong>Content & Media</strong><span>Copywriting, photography, reels and the chapter's blog & newsletter.</span></a>
+          <a href="index.html#domain-outreach"><strong>Marketing & Outreach</strong><span>Growing the community — social media, campus outreach and inter-college relations.</span></a>
+          <a href="index.html#domain-management"><strong>Management & Events</strong><span>Logistics, budgets, venue bookings and making sure every event actually happens.</span></a>
+        </div>
+      </div>
+
+      <a href="index.html#events" class="nav-link">Events</a>
+      <a href="index.html#fests" class="nav-link">Fests</a>
+      <a href="index.html#projects" class="nav-link">Projects &amp; Blogs</a>
+      <a href="index.html#contact" class="nav-link">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 & 2: Domain name + short info -->
+  <section class="page-hero page-hero--center">
+    <div class="section-inner">
+      <a href="index.html#home" class="back-link">← Back to home</a>
+      <p class="eyebrow"><span class="bars bars--xs"></span> STUDY DOMAIN</p>
+      <h1 class="page-hero-title">Machine Learning &amp; AI</h1>
+      <p class="page-hero-sub">From the basics of Python and statistics to neural networks and deployment — this is the track for members who want to build things that learn. Work through the resources below at your own pace, then put it into practice with the domain's projects.</p>
+    </div>
+  </section>
+
+  <!-- 3: Resources -->
+  <section class="section" id="resources">
+    <div class="section-inner">
+      <p class="eyebrow">RESOURCES</p>
+      <h2 class="section-title">Start learning.</h2>
+      <p class="section-lede">Five topic tracks to get you from zero to shipping your first model. Click a card to open its study material.</p>
+
+      <div class="resources-grid">
+        <a class="resource-card" href="study.html?topic=python-for-ml">
+          <span class="resource-icon">Topic 01</span>
+          <h3>Python for ML</h3>
+          <p>NumPy, pandas and the core Python toolkit you'll use in every notebook.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=supervised-learning">
+          <span class="resource-icon">Topic 02</span>
+          <h3>Supervised Learning</h3>
+          <p>Regression, classification, and the math that underpins both.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=neural-networks">
+          <span class="resource-icon">Topic 03</span>
+          <h3>Neural Networks &amp; Deep Learning</h3>
+          <p>Perceptrons, backpropagation, and your first deep learning model.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=nlp">
+          <span class="resource-icon">Topic 04</span>
+          <h3>Natural Language Processing</h3>
+          <p>Tokenization, embeddings, and how machines make sense of text.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=mlops">
+          <span class="resource-icon">Topic 05</span>
+          <h3>Model Deployment &amp; MLOps</h3>
+          <p>Taking a model from notebook to a service other people can use.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: Projects (flip cards) -->
+  <section class="section section--tinted" id="ml-projects">
+    <div class="section-inner">
+      <p class="eyebrow">PROJECTS</p>
+      <h2 class="section-title">What the domain has built.</h2>
+      <p class="section-lede">Current and past projects from the ML/AI domain. Click a card to flip it and read more.</p>
+
+      <div class="flip-grid">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Spam Email Classifier — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/12327A/EAF3FF?text=Spam+Classifier" alt="Spam Email Classifier project">
+              <h3>Spam Email Classifier</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Spam Email Classifier</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A Naive Bayes model trained on a labelled email dataset, deployed as a small Flask API for live predictions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Handwritten Digit Recognizer — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/1E5AFF/F5F9FF?text=Digit+Recognizer" alt="Handwritten Digit Recognizer project">
+              <h3>Handwritten Digit Recognizer</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Handwritten Digit Recognizer</h4>
+              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A CNN trained on MNIST, wrapped in a simple canvas UI where you draw a digit and get a live prediction.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Movie Recommendation System — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/FF4FA6/FFFFFF?text=Recommender" alt="Movie Recommendation System project">
+              <h3>Movie Recommendation System</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Movie Recommendation System</h4>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. A collaborative-filtering recommender built on a public ratings dataset, currently in progress for AY 26-27.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: Mentors -->
+  <section class="section" id="ml-mentors">
+    <div class="section-inner">
+      <p class="eyebrow">MENTORS</p>
+      <h2 class="section-title">Who to ask for help.</h2>
+
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <span class="mentor-avatar">SK</span>
+          <h4>Sanya Kapoor</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">RV</span>
+          <h4>Riya Verma</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">TM</span>
+          <h4>Tanya Mehta</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 6: Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="bars bars--sm"></span>
+      <p>ACM-W BPHC</p>
+      <p class="muted">Student chapter · BITS Pilani, Hyderabad Campus</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:acmw@hyderabad.bits-pilani.ac.in">Email us</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <a href="index.html#contact">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> ACM-W, BITS Pilani Hyderabad Campus. Built by the chapter, for the chapter.</p>
+</footer>
+
+<script src="domain-page.js"></script>
+</body>
+</html>
