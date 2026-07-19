@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Study Material · ACM-W BPHC</title>
-<meta name="description" content="ACM-W BPHC — study material.">
+<title>Competitive Coding · ACM-W BPHC</title>
+<meta name="description" content="ACM-W BPHC — Competitive Coding domain. Resources, projects and mentors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -65,20 +65,138 @@
 </header>
 
 <main>
-  <section class="page-hero">
-    <a href="#" id="backToDomain" class="back-link">← Back to Competitive Coding &amp; AI</a>
-    <p class="eyebrow"><span class="bars bars--xs"></span> STUDY MATERIAL</p>
-    <h1 class="page-hero-title" id="topicTitle">Loading…</h1>
-    <p class="page-hero-sub" id="topicIntro"></p>
-  </section>
 
-  <section class="section">
+  <!-- 1 & 2: Domain name + short info -->
+  <section class="page-hero page-hero--center">
     <div class="section-inner">
-      <article class="study-content" id="topicContent"></article>
+      <a href="index.html#home" class="back-link">← Back to home</a>
+      <p class="eyebrow"><span class="bars bars--xs"></span> STUDY DOMAIN</p>
+      <h1 class="page-hero-title">Competitive Coding</h1>
+      <p class="page-hero-sub">From your first "Accepted" verdict to climbing the Codeforces leaderboard — this track builds the problem-solving muscle every strong engineer needs. Work through the resources below, then put the skills to use in the domain's projects and contests.</p>
     </div>
   </section>
+
+  <!-- 3: Resources -->
+  <section class="section" id="resources">
+    <div class="section-inner">
+      <p class="eyebrow">RESOURCES</p>
+      <h2 class="section-title">Start learning.</h2>
+      <p class="section-lede">Five topic tracks covering the core of competitive programming. Click a card to open its study material.</p>
+
+      <div class="resources-grid">
+        <a class="resource-card" href="study.html?topic=complexity">
+          <span class="resource-icon">Topic 01</span>
+          <h3>Time &amp; Space Complexity</h3>
+          <p>Big-O basics and how to reason about whether a solution will actually run in time.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=arrays-strings">
+          <span class="resource-icon">Topic 02</span>
+          <h3>Arrays &amp; Strings</h3>
+          <p>Two pointers, sliding window, and prefix sums — the bread and butter of easy-medium problems.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=graphs-trees">
+          <span class="resource-icon">Topic 03</span>
+          <h3>Graphs &amp; Trees</h3>
+          <p>BFS, DFS, shortest paths, and traversal patterns that show up in half of all contest problems.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=dynamic-programming">
+          <span class="resource-icon">Topic 04</span>
+          <h3>Dynamic Programming</h3>
+          <p>Recognizing overlapping subproblems and building up from brute force to an optimal solution.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study.html?topic=contest-strategy">
+          <span class="resource-icon">Topic 05</span>
+          <h3>Contest Strategy &amp; STL</h3>
+          <p>Templates, fast I/O, the STL/standard library shortcuts, and how to pace a contest.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: Projects (flip cards) -->
+  <section class="section section--tinted" id="cc-projects">
+    <div class="section-inner">
+      <p class="eyebrow">PROJECTS</p>
+      <h2 class="section-title">What the domain has built.</h2>
+      <p class="section-lede">Current and past projects from the Competitive Coding domain. Click a card to flip it and read more.</p>
+
+      <div class="flip-grid">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Contest Practice Tracker — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/12327A/EAF3FF?text=Practice+Tracker" alt="Contest Practice Tracker project">
+              <h3>Contest Practice Tracker</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Contest Practice Tracker</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A dashboard that logs solved problems by topic and difficulty, so members can see their own gaps at a glance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Codeforces Rating Predictor — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/1E5AFF/F5F9FF?text=Rating+Predictor" alt="Codeforces Rating Predictor project">
+              <h3>Codeforces Rating Predictor</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Codeforces Rating Predictor</h4>
+              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A small regression model that estimates rating change from a contest's problem set and standings.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="DSA Question Bank — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/FF4FA6/FFFFFF?text=DSA+Bank" alt="DSA Question Bank project">
+              <h3>DSA Question Bank</h3>
+            </div>
+            <div class="flip-back">
+              <h4>DSA Question Bank</h4>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. A searchable, tagged archive of past workshop and contest problems, currently in progress for AY 26-27.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: Mentors -->
+  <section class="section" id="cc-mentors">
+    <div class="section-inner">
+      <p class="eyebrow">MENTORS</p>
+      <h2 class="section-title">Who to ask for help.</h2>
+
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <span class="mentor-avatar">PJ</span>
+          <h4>Prisha Jain</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">AD</span>
+          <h4>Aditi Desai</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">MN</span>
+          <h4>Meera Nair</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- 6: Footer -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -103,6 +221,5 @@
 </footer>
 
 <script src="domain-page.js"></script>
-<script src="study.js"></script>
 </body>
 </html>
