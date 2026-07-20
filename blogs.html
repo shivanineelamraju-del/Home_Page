@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs and articles | ACM-W BPHC</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom Theme Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        themeNav: '#0f111a',       
+                        themeBody: '#353155',      
+                        themeCard: '#242842',      
+                        themeActive: '#a655f7',    
+                        textMuted: '#9ba1b4',      
+                        tagDark: '#17192b',        
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #353155;
+            color: #ffffff;
+            position: relative;
+            z-index: 0;
+        }
+        .filter-btn, .status-dot {
+            transition: all 0.3s ease-in-out;
+        }
+        .js-tilt-glare {
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Animated Ambient Background Orbs -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed top-1/3 right-10 w-[30rem] h-[30rem] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-themeNav/90 backdrop-blur-md px-8 py-5 flex justify-between items-center sticky top-0 z-50 border-b border-gray-800/50">
+        <div class="flex items-center gap-6">
+            <a href="index.html" class="text-xl font-bold tracking-wide">ACM-W BPHC</a>
+            <div class="w-12 h-6 bg-gray-600 rounded-full flex items-center px-1 cursor-pointer">
+                <div class="w-4 h-4 bg-white rounded-full flex items-center justify-center translate-x-6 shadow-sm">
+                    <svg class="w-3 h-3 text-gray-900" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </div>
+            </div>
+        </div>
+        <ul class="flex space-x-8 text-sm font-medium text-gray-200">
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+            <li class="flex items-center gap-1 cursor-pointer hover:text-white transition">Domains <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></li>
+            <li><a href="#" class="hover:text-white transition">Events</a></li>
+            <li><a href="#" class="hover:text-white transition">Fests</a></li>
+            <li><a href="#" class="text-white font-bold">Blogs and articles</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Featured Article Hero Banner (Now at the top) -->
+    <section class="max-w-7xl mx-auto px-10 pt-16 mb-12 w-full">
+        <div class="relative w-full h-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50 group cursor-pointer bg-themeCard" onclick="window.location.href='article.html'">
+            <img src="assets/featured-prism.jpg" alt="Featured Post" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80">
+            <div class="absolute inset-0 bg-gradient-to-r from-themeNav via-themeNav/90 to-transparent md:to-themeNav/40 pointer-events-none"></div>
+            <div class="relative z-10 p-8 md:p-14 flex flex-col justify-end md:justify-center h-full max-w-3xl">
+                <div class="mb-5"><span class="bg-tagDark/80 backdrop-blur-sm px-3 py-1 rounded text-[10px] tracking-widest uppercase font-bold text-cyan-400 shadow-sm border border-cyan-500/20">Spotlight</span></div>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-lg">The Future of Tech: Key Leadership Strategies for 2026</h2>
+                <p class="text-[15px] md:text-[17px] text-gray-300 leading-relaxed mb-10 max-w-2xl drop-shadow-sm">Examining the major trends and strategies shaping the technology landscape this year, from deep-learning transformations to building inclusive engineering pipelines within our chapter.</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-cyan-400 p-[2px] shadow-lg"><div class="w-full h-full bg-themeNav rounded-full flex items-center justify-center text-[10px] font-bold text-white tracking-wider">AW</div></div>
+                    <div class="flex flex-col"><span class="text-sm font-bold text-white">ACM-W Editorial Board</span><span class="text-[11px] text-gray-400 font-mono tracking-wider mt-0.5">JULY 20, 2026</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tags & Read Status Legend -->
+    <div class="max-w-7xl mx-auto px-10 mb-10 w-full">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="flex flex-wrap gap-4" id="filter-container">
+                <button onclick="filterArticles('all')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-themeActive text-white shadow-md border border-purple-400/30">All</button>
+                <button onclick="filterArticles('member')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-themeCard/80 backdrop-blur-sm text-gray-300 border border-gray-700/50 hover:bg-gray-700 hover:text-white">Member Posts</button>
+                <button onclick="filterArticles('news')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-themeCard/80 backdrop-blur-sm text-gray-300 border border-gray-700/50 hover:bg-gray-700 hover:text-white">News Explainers</button>
+                <button onclick="filterArticles('stem')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-themeCard/80 backdrop-blur-sm text-gray-300 border border-gray-700/50 hover:bg-gray-700 hover:text-white">STEM Highlights</button>
+            </div>
+            <div class="flex items-center gap-5 text-xs font-mono text-gray-400 bg-themeCard/60 backdrop-blur-md px-4 py-2 rounded-full border border-gray-700/50 shadow-inner">
+                <span class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div> Unread</span>
+                <span class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.8)]"></div> Read</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blogs Grid -->
+    <main class="max-w-7xl mx-auto px-10 pb-24 w-full flex-1">
+        <div class="mb-8 border-b border-gray-700/50 pb-4">
+            <h3 class="text-sm font-bold tracking-[0.15em] text-gray-400 uppercase">Top Stories</h3>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
+            <article data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15" class="blog-card flex flex-col bg-themeCard/90 backdrop-blur-sm border border-gray-700/50 shadow-xl rounded-2xl overflow-hidden cursor-pointer" data-category="member">
+                <div class="h-56 bg-[#2c314f] relative"><img src="assets/featured-prism.jpg" alt="Prism" class="w-full h-full object-cover opacity-60"><div class="absolute top-4 left-4 bg-tagDark/80 backdrop-blur-sm px-3 py-1 rounded text-[10px] tracking-widest uppercase font-bold text-purple-400 shadow-sm border border-purple-500/20">Member Post</div></div>
+                <div class="p-8 flex flex-col flex-1 justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <h2 class="text-2xl font-bold text-white leading-snug">My Journey Building a Multi-Sensor Hardware Warning System</h2>
+                            <span id="status-post-1" class="status-dot flex-shrink-0 w-3 h-3 rounded-full mt-1.5 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" title="Unread"></span>
+                        </div>
+                        <p class="text-[15px] text-textMuted leading-relaxed mb-8">A step-by-step devlog detailing the collaborative design and debugging process of our recent induction task.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto z-10">
+                        <a href="article-1.html" onclick="markAsRead('post-1')" class="text-[15px] font-bold text-white hover:text-cyan-300 transition flex items-center gap-1">Read More &rarr;</a>
+                        <span class="text-xs font-mono text-textMuted uppercase tracking-wider font-semibold">12 MIN READ</span>
+                    </div>
+                </div>
+            </article>
+            <article data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15" class="blog-card flex flex-col bg-themeCard/90 backdrop-blur-sm border border-gray-700/50 shadow-xl rounded-2xl overflow-hidden cursor-pointer" data-category="news">
+                <div class="h-56 bg-[#2c314f] relative"><img src="assets/blog-1-algorithms.jpg" alt="Algorithms" class="w-full h-full object-cover opacity-60"><div class="absolute top-4 left-4 bg-tagDark/80 backdrop-blur-sm px-3 py-1 rounded text-[10px] tracking-widest uppercase font-bold text-cyan-400 shadow-sm border border-cyan-500/20">News Explainer</div></div>
+                <div class="p-8 flex flex-col flex-1 justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <h2 class="text-2xl font-bold text-white leading-snug">Demystifying the Latest Breakthroughs in Quantum Algorithms</h2>
+                            <span id="status-post-2" class="status-dot flex-shrink-0 w-3 h-3 rounded-full mt-1.5 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" title="Unread"></span>
+                        </div>
+                        <p class="text-[15px] text-textMuted leading-relaxed mb-8">Breaking down recent industry announcements regarding qubit stability and dual-control Toffoli gate execution.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto z-10">
+                        <a href="article.html" onclick="markAsRead('post-2')" class="text-[15px] font-bold text-white hover:text-cyan-300 transition flex items-center gap-1">Read More &rarr;</a>
+                        <span class="text-xs font-mono text-textMuted uppercase tracking-wider font-semibold">9 MIN READ</span>
+                    </div>
+                </div>
+            </article>
+            <article data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15" class="blog-card flex flex-col bg-themeCard/90 backdrop-blur-sm border border-gray-700/50 shadow-xl rounded-2xl overflow-hidden cursor-pointer" data-category="stem">
+                <div class="h-56 bg-[#2c314f] relative"><img src="assets/blog-2-diversity.jpg" alt="Diversity" class="w-full h-full object-cover opacity-60"><div class="absolute top-4 left-4 bg-tagDark/80 backdrop-blur-sm px-3 py-1 rounded text-[10px] tracking-widest uppercase font-bold text-pink-500 shadow-sm border border-pink-500/20">STEM Highlight</div></div>
+                <div class="p-8 flex flex-col flex-1 justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <h2 class="text-2xl font-bold text-white leading-snug">Pioneers of Code: Celebrating Margaret Hamilton and Grace Hopper</h2>
+                            <span id="status-post-3" class="status-dot flex-shrink-0 w-3 h-3 rounded-full mt-1.5 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" title="Unread"></span>
+                        </div>
+                        <p class="text-[15px] text-textMuted leading-relaxed mb-8">A historical deep-dive into the foundational engineering contributions made by women in early computational science.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto z-10">
+                        <a href="article-3.html" onclick="markAsRead('post-3')" class="text-[15px] font-bold text-white hover:text-cyan-300 transition flex items-center gap-1">Read More &rarr;</a>
+                        <span class="text-xs font-mono text-textMuted uppercase tracking-wider font-semibold">7 MIN READ</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-themeNav/90 backdrop-blur-md pt-16 pb-8 px-10 mt-auto w-full border-t border-gray-800/50 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="w-12 h-1.5 bg-gradient-to-r from-pink-500 to-cyan-400 rounded-full mb-6"></div>
+                    <h3 class="text-2xl font-bold text-white">ACM-W BPHC</h3>
+                    <p class="text-purple-300 text-[15px]">Student chapter · BITS Pilani, Hyderabad Campus</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase mb-6 drop-shadow-md">Connect</h4>
+                    <ul class="space-y-4 text-purple-300 text-[15px]">
+                        <li><a href="#" class="hover:text-white transition">Email us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase mb-6 drop-shadow-md">Contact Us</h4>
+                    <a href="#" class="text-purple-300 text-[15px] hover:text-white transition">Get in touch &rarr;</a>
+                </div>
+            </div>
+            <div class="text-center text-[#475569] text-xs pt-8 border-t border-gray-800/50">
+                <p>&copy; 2026 ACM-W, BITS Pilani Hyderabad Campus. Built by the chapter, for the chapter.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readArticles = JSON.parse(localStorage.getItem('acmw_read_articles')) || [];
+            readArticles.forEach(id => {
+                const statusDot = document.getElementById('status-' + id);
+                if(statusDot) {
+                    statusDot.classList.remove('bg-red-500', 'shadow-[0_0_8px_rgba(239,68,68,0.8)]');
+                    statusDot.classList.add('bg-green-400', 'shadow-[0_0_8px_rgba(74,222,128,0.8)]');
+                    statusDot.title = "Read";
+                }
+            });
+        });
+        function markAsRead(id) {
+            let readArticles = JSON.parse(localStorage.getItem('acmw_read_articles')) || [];
+            if (!readArticles.includes(id)) {
+                readArticles.push(id);
+                localStorage.setItem('acmw_read_articles', JSON.stringify(readArticles));
+                const statusDot = document.getElementById('status-' + id);
+                if(statusDot) {
+                    statusDot.classList.remove('bg-red-500', 'shadow-[0_0_8px_rgba(239,68,68,0.8)]');
+                    statusDot.classList.add('bg-green-400', 'shadow-[0_0_8px_rgba(74,222,128,0.8)]');
+                    statusDot.title = "Read";
+                }
+            }
+        }
+        function filterArticles(category) {
+            const cards = document.querySelectorAll('.blog-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-themeActive', 'text-white', 'shadow-md', 'border-purple-400/30');
+                btn.classList.add('bg-themeCard/80', 'text-gray-300', 'border-gray-700/50');
+            });
+            event.currentTarget.classList.remove('bg-themeCard/80', 'text-gray-300', 'border-gray-700/50');
+            event.currentTarget.classList.add('bg-themeActive', 'text-white', 'shadow-md', 'border-purple-400/30');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
