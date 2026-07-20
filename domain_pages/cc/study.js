@@ -9,31 +9,31 @@
 const TOPICS = {
   "complexity": {
     domainLabel: "Competitive Coding",
-    domainHref: "index.html",
+    domainHref: "cc.html",
     title: "Time & Space Complexity",
     intro: "Big-O basics and how to reason about whether a solution will actually run in time.",
   },
   "arrays-strings": {
     domainLabel: "Competitive Coding",
-    domainHref: "index.html",
+    domainHref: "cc.html",
     title: "Arrays & Strings",
     intro: "Two pointers, sliding window, and prefix sums — the bread and butter of easy-medium problems.",
   },
   "graphs-trees": {
     domainLabel: "Competitive Coding",
-    domainHref: "index.html",
+    domainHref: "cc.html",
     title: "Graphs & Trees",
     intro: "BFS, DFS, shortest paths, and traversal patterns that show up in half of all contest problems.",
   },
   "dynamic-programming": {
     domainLabel: "Competitive Coding",
-    domainHref: "index.html",
+    domainHref: "cc.html",
     title: "Dynamic Programming",
     intro: "Recognizing overlapping subproblems and building up from brute force to an optimal solution.",
   },
   "contest-strategy": {
     domainLabel: "Competitive Coding",
-    domainHref: "index.html",
+    domainHref: "cc.html",
     title: "Contest Strategy & STL",
     intro: "Templates, fast I/O, the STL/standard library shortcuts, and how to pace a contest.",
   },
