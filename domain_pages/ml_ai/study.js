@@ -9,31 +9,31 @@
 const TOPICS = {
   "python-for-ml": {
     domainLabel: "Machine Learning & AI",
-    domainHref: "domain_pages/ml_ai/ml_ai.html",
+    domainHref: "ml_ai.html",
     title: "Python for ML",
     intro: "The core Python toolkit — NumPy, pandas and plotting — that every ML notebook in this domain builds on.",
   },
   "supervised-learning": {
     domainLabel: "Machine Learning & AI",
-    domainHref: "domain_pages/ml_ai/ml-ai.html",
+    domainHref: "ml_ai.html",
     title: "Supervised Learning",
     intro: "Regression and classification, and the math that underpins both.",
   },
   "neural-networks": {
     domainLabel: "Machine Learning & AI",
-    domainHref: "domain_pages/ml_ai/ml-ai.html",
+    domainHref: "ml_ai.html",
     title: "Neural Networks & Deep Learning",
     intro: "Perceptrons, backpropagation, and building your first deep learning model.",
   },
   "nlp": {
     domainLabel: "Machine Learning & AI",
-    domainHref: "domain_pages/ml_ai/ml-ai.html",
+    domainHref: "ml_ai.html",
     title: "Natural Language Processing",
     intro: "Tokenization, embeddings, and how machines make sense of text.",
   },
   "mlops": {
     domainLabel: "Machine Learning & AI",
-    domainHref: "domain_pages/ml_ai/ml_ai.html",
+    domainHref: "ml_ai.html",
     title: "Model Deployment & MLOps",
     intro: "Taking a model from a notebook to a service other people can actually use.",
   },
