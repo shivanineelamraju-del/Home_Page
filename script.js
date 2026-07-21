@@ -1,16 +1,21 @@
 /* =====================================================
    ACM-W BPHC — single-page site behaviour
-   All page content (domains, events, fests, projects,
-   testimonials, senate) is rendered directly in index.html.
+   All page content (events, fests, projects, testimonials,
+   senate) is rendered directly in index.html. The Domains
+   nav link scrolls to the Domains section on the home page;
+   each domain card is a plain link out to its own standalone
+   page (see /domains/*). Contact Us likewise links out to
+   the standalone contact page.
    This file only handles interactivity: the tab/"page"
-   switching, the domains dropdown, the events calendar,
-   and the projects filter.
+   switching, the events calendar, and the projects filter.
    ===================================================== */
 
 /* ---------------------------------------------------
    1. PAGE SWITCHING (tabs that behave like pages)
    Any element with [data-page="X"] switches to the
-   section with id="page-X" when clicked.
+   section with id="page-X" when clicked. If it also has
+   [data-anchor="Y"], the page scrolls to id="Y" afterwards
+   (used for the Domains nav link -> #domains section).
    --------------------------------------------------- */
 const pages = document.querySelectorAll(".page");
 const pageLinks = document.querySelectorAll("[data-page]");
@@ -19,8 +24,7 @@ function showPage(id, anchor){
   if(!document.getElementById("page-" + id)) id = "home";
   pages.forEach(p => p.classList.toggle("is-active", p.id === "page-" + id));
   pageLinks.forEach(a => {
-    const isDomainGroup = id.startsWith("domain-") && a.id === "domainsBtn";
-    a.classList.toggle("is-active", a.dataset.page === id || isDomainGroup);
+    a.classList.toggle("is-active", a.dataset.page === id);
   });
   window.scrollTo({top:0, behavior:"instant"});
   history.replaceState(null, "", "#" + id);
@@ -36,7 +40,6 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   showPage(link.dataset.page, link.dataset.anchor);
   mainNav.classList.remove("is-open");
-  domainsPanel.classList.remove("is-open");
 });
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -128,7 +131,7 @@ if(heroCube){
 }
 
 /* ---------------------------------------------------
-   2. NAV — mobile toggle + Domains dropdown
+   2. NAV — mobile toggle
    --------------------------------------------------- */
 const navToggle = document.getElementById("navToggle");
 const mainNav = document.getElementById("mainNav");
@@ -137,35 +140,16 @@ navToggle.addEventListener("click", () => {
   navToggle.setAttribute("aria-expanded", open);
 });
 
-const domainsBtn = document.getElementById("domainsBtn");
-const domainsPanel = document.getElementById("domainsPanel");
-domainsBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const open = domainsPanel.classList.toggle("is-open");
-  domainsBtn.setAttribute("aria-expanded", open);
-});
-document.addEventListener("click", (e) => {
-  if(!e.target.closest(".nav-dropdown")){
-    domainsPanel.classList.remove("is-open");
-    domainsBtn.setAttribute("aria-expanded", false);
-  }
-});
-
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* ---------------------------------------------------
-   3. DOMAIN SUBTABS (Bulletin / Tasks / Progress)
-   Scoped to whichever .domain-panel was clicked in, so
-   all six domain pages can share the same markup/classes.
-   --------------------------------------------------- */
-/* ---------------------------------------------------
-   3b. SCROLL-REVEAL — fades/slides section titles and
+   3. SCROLL-REVEAL — fades/slides section titles and
    cards into view as the user scrolls to them.
    Testimonials and senate cards replay on every pass;
    everything else reveals once and stays put.
    --------------------------------------------------- */
 const revealOnceTargets = document.querySelectorAll(
-  ".section-title, .page-hero-title, .project-card, .fest-card"
+  ".section-title, .page-hero-title, .project-card, .fest-card, .quicklink-card"
 );
 const revealReplayTargets = document.querySelectorAll(
   ".testimonial-card, .senate-card"
@@ -195,18 +179,6 @@ if("IntersectionObserver" in window){
 } else {
   allRevealTargets.forEach(el => el.classList.add("is-visible"));
 }
-
-document.querySelectorAll(".domain-panel").forEach(panel => {
-  panel.addEventListener("click", (e) => {
-    const btn = e.target.closest(".subtab");
-    if(!btn) return;
-    const activeSub = btn.dataset.sub;
-    panel.querySelectorAll(".subtab").forEach(b => b.classList.toggle("is-active", b === btn));
-    panel.querySelectorAll(".subpanel").forEach(p => {
-      p.hidden = p.dataset.subpanel !== activeSub;
-    });
-  });
-});
 
 /* ---------------------------------------------------
    4. EVENTS — calendar + day detail
