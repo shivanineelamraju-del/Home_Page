@@ -36,7 +36,7 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   showPage(link.dataset.page, link.dataset.anchor);
   mainNav.classList.remove("is-open");
-  domainsPanel.classList.remove("is-open");
+  if(domainsPanel) domainsPanel.classList.remove("is-open");
 });
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -129,6 +129,10 @@ if(heroCube){
 
 /* ---------------------------------------------------
    2. NAV — mobile toggle + Domains dropdown
+   (domainsBtn/domainsPanel no longer exist in the DOM —
+   Domains is now a plain scroll-to-section nav link —
+   so this is guarded rather than removed outright, in
+   case a dropdown gets reintroduced later.)
    --------------------------------------------------- */
 const navToggle = document.getElementById("navToggle");
 const mainNav = document.getElementById("mainNav");
@@ -139,17 +143,19 @@ navToggle.addEventListener("click", () => {
 
 const domainsBtn = document.getElementById("domainsBtn");
 const domainsPanel = document.getElementById("domainsPanel");
-domainsBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const open = domainsPanel.classList.toggle("is-open");
-  domainsBtn.setAttribute("aria-expanded", open);
-});
-document.addEventListener("click", (e) => {
-  if(!e.target.closest(".nav-dropdown")){
-    domainsPanel.classList.remove("is-open");
-    domainsBtn.setAttribute("aria-expanded", false);
-  }
-});
+if(domainsBtn && domainsPanel){
+  domainsBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = domainsPanel.classList.toggle("is-open");
+    domainsBtn.setAttribute("aria-expanded", open);
+  });
+  document.addEventListener("click", (e) => {
+    if(!e.target.closest(".nav-dropdown")){
+      domainsPanel.classList.remove("is-open");
+      domainsBtn.setAttribute("aria-expanded", false);
+    }
+  });
+}
 
 document.getElementById("year").textContent = new Date().getFullYear();
 

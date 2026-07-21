@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Dev · ACM-W BPHC</title>
+<meta name="description" content="ACM-W BPHC — Web Dev domain. Resources, projects and mentors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../domain-page.css">
+<script>
+  (function(){
+    var saved = localStorage.getItem("acmw-theme");
+    var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+</head>
+<body>
+<div class="site-bg" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="nav-wrap">
+    <div class="nav-right">
+      <a class="brand" href="../../index.html">
+        <span class="brand-suffix">ACM-W BPHC</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="toggle-knob">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 14.7A8.5 8.5 0 0 1 9.3 3.6a.5.5 0 0 0-.6-.7A9.5 9.5 0 1 0 21.1 15.3a.5.5 0 0 0-.7-.6Z"/></svg>
+          </span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="../../index.html#about" class="nav-link">About</a>
+      <a href="../../index.html#domains" class="nav-link">Domains</a>
+      <a href="../../index.html#events" class="nav-link">Events</a>
+      <a href="../../index.html#fests" class="nav-link">Fests</a>
+      <a href="../../index.html#projects" class="nav-link">Projects &amp; Blogs</a>
+      <a href="../../contact_us_page/contact.html" class="nav-link">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 & 2: Domain name + short info -->
+  <section class="page-hero page-hero--center">
+    <div class="section-inner">
+      <a href="../../index.html#domains" class="back-link">← Back to home</a>
+      <p class="eyebrow"><span class="bars bars--xs"></span> STUDY DOMAIN</p>
+      <h1 class="page-hero-title">Web Dev</h1>
+      <p class="page-hero-sub">From a static HTML page to a deployed, working site — this track covers the skills behind the chapter's own website, event registration flows, and hackathon dashboards. Work through the resources below, then put them to use in the domain's projects.</p>
+    </div>
+  </section>
+
+  <!-- 3: Resources -->
+  <section class="section" id="resources">
+    <div class="section-inner">
+      <p class="eyebrow">RESOURCES</p>
+      <h2 class="section-title">Start learning.</h2>
+      <p class="section-lede">Five topic tracks covering the core of building and shipping a website. Click a card to open its study material.</p>
+
+      <div class="resources-grid">
+        <a class="resource-card" href="study_web_dev.html?topic=html-css-basics">
+          <span class="resource-icon">Topic 01</span>
+          <h3>HTML &amp; CSS Basics</h3>
+          <p>Semantic markup, the box model, and styling a page from scratch.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study_web_dev.html?topic=javascript-dom">
+          <span class="resource-icon">Topic 02</span>
+          <h3>JavaScript &amp; the DOM</h3>
+          <p>Making a page interactive — events, DOM manipulation, and basic state.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study_web_dev.html?topic=responsive-design">
+          <span class="resource-icon">Topic 03</span>
+          <h3>Responsive Design</h3>
+          <p>Flexbox, grid, and media queries — making a site work on every screen size.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study_web_dev.html?topic=forms-apis">
+          <span class="resource-icon">Topic 04</span>
+          <h3>Forms &amp; APIs</h3>
+          <p>Handling form submissions and talking to a backend or third-party API.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+        <a class="resource-card" href="study_web_dev.html?topic=git-deployment">
+          <span class="resource-icon">Topic 05</span>
+          <h3>Git &amp; Deployment</h3>
+          <p>Version control basics and shipping a site with GitHub Pages.</p>
+          <span class="resource-arrow">Read material →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: Projects (flip cards) -->
+  <section class="section section--tinted" id="wd-projects">
+    <div class="section-inner">
+      <p class="eyebrow">PROJECTS</p>
+      <h2 class="section-title">What the domain has built.</h2>
+      <p class="section-lede">Current and past projects from the Web Dev domain. Click a card to flip it and read more.</p>
+
+      <div class="flip-grid">
+        <div class="flip-card" tabindex="0" role="button" aria-label="Chapter Website Rebuild — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/12327A/EAF3FF?text=Website+Rebuild" alt="Chapter Website Rebuild project">
+              <h3>Chapter Website Rebuild</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Chapter Website Rebuild</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. The current chapter site itself — rebuilt from scratch with a shared design system and per-domain resource pages like this one.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="RSVP & Event Registration System — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/1E5AFF/F5F9FF?text=RSVP+System" alt="RSVP and Event Registration System project">
+              <h3>RSVP &amp; Event Registration System</h3>
+            </div>
+            <div class="flip-back">
+              <h4>RSVP &amp; Event Registration System</h4>
+              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A lightweight form-to-spreadsheet pipeline that automates signups and reminder emails for every workshop.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Live Hackathon Leaderboard — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-front">
+              <img src="https://placehold.co/600x400/FF4FA6/FFFFFF?text=Live+Leaderboard" alt="Live Hackathon Leaderboard project">
+              <h3>Live Hackathon Leaderboard</h3>
+            </div>
+            <div class="flip-back">
+              <h4>Live Hackathon Leaderboard</h4>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. A real-time scoreboard for chapter hackathons, currently in progress for AY 26-27.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: Mentors -->
+  <section class="section" id="wd-mentors">
+    <div class="section-inner">
+      <p class="eyebrow">MENTORS</p>
+      <h2 class="section-title">Who to ask for help.</h2>
+
+      <div class="mentors-grid">
+        <div class="mentor-card">
+          <span class="mentor-avatar">NP</span>
+          <h4>Nisha Patil</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">KV</span>
+          <h4>Kavya Venkatesh</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+        <div class="mentor-card">
+          <span class="mentor-avatar">AS</span>
+          <h4>Amrita Sen</h4>
+          <span class="mentor-role">Domain Mentor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 6: Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="bars bars--sm"></span>
+      <p>ACM-W BPHC</p>
+      <p class="muted">Student chapter · BITS Pilani, Hyderabad Campus</p>
+    </div>
+    </div>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> ACM-W, BITS Pilani Hyderabad Campus. Built by the chapter, for the chapter.</p>
+</footer>
+
+<script src="../domain-page.js"></script>
+</body>
+</html>
