@@ -26,7 +26,11 @@
             --teal:       #0B3D91;
             --muted:      #5B6B85;
             --line:       #DCE7F5;
+            --line-dark:  rgba(255,255,255,0.14);
             --shadow:     rgba(11,11,13,0.09);
+            --cube-blue:  #BFDBFF;
+            --cube-white: #F5F9FF;
+            --cube-pink:  #F8CBE4;
             --grad-1:     #BFDBFF;
             --grad-2:     #A9BFF5;
             --grad-3:     #E3B8DC;
@@ -108,12 +112,20 @@
             max-width: var(--container); margin: 0 auto; padding: 14px 24px;
             display: flex; align-items: center; justify-content: space-between; gap: 24px;
         }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
         .brand {
             font-family: var(--font-display);
             font-weight: 700;
             font-size: 1.1rem;
             text-decoration: none;
             color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .nav-right {
             display: flex; align-items: center; gap: 20px;
@@ -150,6 +162,37 @@
         html[data-theme="dark"] .theme-toggle .icon-sun{display:none;}
         html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 
+        /* Signature bar motif matching the reference image */
+        .bars { 
+            display: inline-flex; 
+            height: 8px; 
+            width: 32px; 
+            border-radius: 3px; 
+            overflow: hidden; 
+            flex-shrink: 0;
+            background: linear-gradient(90deg, var(--magenta) 0 25%, var(--violet) 25% 50%, var(--amber) 50% 75%, var(--teal) 75% 100%);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Section header style with inline motif + mono font */
+        .section-header-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-title-mono {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0;
+        }
+
         /* Main Container */
         .container {
             max-width: var(--container);
@@ -157,7 +200,7 @@
             padding: 40px 24px;
         }
 
-        /* Spotlight Section */
+        /* Spotlight Section - Static / No Hover Effects */
         .spotlight-card {
             background-color: var(--surface);
             border-radius: var(--radius);
@@ -181,6 +224,7 @@
             min-height: 300px;
             background-color: var(--paper-tint);
             position: relative;
+            overflow: hidden;
         }
 
         .spotlight-image-container img {
@@ -222,6 +266,7 @@
             align-items: center;
             gap: 15px;
             margin-top: 20px;
+            position: relative;
         }
 
         .avatar {
@@ -238,6 +283,11 @@
             font-family: var(--font-mono);
         }
 
+        .author-details {
+            position: relative;
+            cursor: pointer;
+        }
+
         .author-details span {
             display: block;
             font-size: 0.9rem;
@@ -247,6 +297,14 @@
             font-weight: 600;
             color: var(--ink);
             font-family: var(--font-body);
+            position: relative;
+            display: inline-block;
+        }
+
+        .author-details .name::after {
+            content: ' ▼';
+            font-size: 0.6rem;
+            color: var(--magenta);
         }
 
         .author-details .date {
@@ -255,7 +313,47 @@
             font-family: var(--font-mono);
         }
 
-        /* Filters & Legend Bar */
+        /* Author Bio Tooltip / Popup Card */
+        .author-bio-popup {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 0;
+            width: 280px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 12px 30px var(--shadow);
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.25s cubic-bezier(.22,1,.36,1);
+            pointer-events: none;
+        }
+
+        .author-details:hover .author-bio-popup,
+        .author-details:focus-within .author-bio-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .author-bio-popup h4 {
+            font-size: 0.95rem;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .author-bio-popup p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Filters, Sort Dropdown & Legend Bar */
         .filter-container {
             display: flex;
             justify-content: space-between;
@@ -263,6 +361,13 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
             gap: 20px;
+        }
+
+        .filter-left-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .filter-pills {
@@ -281,12 +386,42 @@
             color: var(--ink-soft);
             font-weight: 500;
             font-family: var(--font-mono);
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
         }
 
         .pill.active {
             background-color: var(--ink);
             color: var(--paper);
             border-color: var(--ink);
+        }
+
+        /* Redesigned Sleek Pill-Style Sort Dropdown */
+        .sort-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: var(--surface);
+            border: 1px solid var(--line);
+            padding: 9px 36px 9px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            font-weight: 500;
+            font-family: var(--font-mono);
+            outline: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FF4FA6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            box-shadow: 0 2px 6px var(--shadow);
+            transition: all 0.25s cubic-bezier(.22,1,.36,1);
+        }
+
+        .sort-select:hover, .sort-select:focus {
+            border-color: var(--magenta);
+            color: var(--magenta);
+            box-shadow: 0 4px 12px rgba(255, 79, 166, 0.15);
+            transform: translateY(-1px);
         }
 
         .status-legend {
@@ -310,13 +445,6 @@
         .dot-read { background-color: #22c55e; }
 
         /* Top Stories Grid */
-        .section-title {
-            font-size: clamp(1.6rem, 3vw, 2.3rem);
-            margin-bottom: 25px;
-            color: var(--ink);
-            font-family: var(--font-display);
-        }
-
         .stories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -324,6 +452,7 @@
             margin-bottom: 60px;
         }
 
+        /* Enhanced Story / Blog Cards with Interactive Glow & Slide-up Effect */
         .story-card {
             background-color: var(--surface);
             border-radius: var(--radius);
@@ -334,11 +463,32 @@
             box-shadow: 0 12px 30px var(--shadow);
             border: 1px solid var(--line);
             position: relative;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(.22,1,.36,1), 
+                        box-shadow 0.3s cubic-bezier(.22,1,.36,1), 
+                        border-color 0.3s ease;
         }
+
+        /* Ambient colored border lighting trick on hover */
+        .story-card::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--magenta), var(--violet), var(--amber));
+            border-radius: calc(var(--radius) + 2px);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .story-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 34px var(--shadow);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 22px 45px rgba(255, 79, 166, 0.18);
+            border-color: transparent;
+        }
+
+        .story-card:hover::after {
+            opacity: 1;
         }
 
         .card-image-container {
@@ -346,12 +496,18 @@
             height: 180px;
             background-color: var(--paper-tint);
             position: relative;
+            overflow: hidden;
         }
 
         .card-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s cubic-bezier(.22,1,.36,1);
+        }
+
+        .story-card:hover .card-image-container img {
+            transform: scale(1.08) rotate(1deg);
         }
 
         .card-body {
@@ -360,6 +516,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background: var(--surface);
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
         }
 
         .card-top {
@@ -397,6 +556,11 @@
             line-height: 1.1;
             color: var(--ink);
             font-family: var(--font-display);
+            transition: color 0.2s ease;
+        }
+
+        .story-card:hover h3 {
+            color: var(--magenta);
         }
 
         .story-card p {
@@ -419,6 +583,14 @@
             font-weight: 600;
             font-size: 0.85rem;
             font-family: var(--font-mono);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.2s ease;
+        }
+
+        .story-card:hover .read-more {
+            gap: 8px;
         }
 
         .read-time {
@@ -450,6 +622,13 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 48px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-top: 4px;
         }
 
         .footer-brand p {
@@ -496,7 +675,7 @@
 
         .footer-copy {
             text-align: center;
-            color: #8A6270;
+            color: #D9A9C2;
             font-size: 0.78rem;
             margin: 50px 0 0;
             font-family: var(--font-body);
@@ -522,7 +701,15 @@
 
     <header class="site-header">
         <div class="nav-wrap">
-            <a href="index.html" class="brand">ACM-W BPHC</a>
+            <div class="brand-container">
+                <a href="index.html" class="brand">ACM-W BPHC</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="toggle-knob">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                </button>
+            </div>
             <div class="nav-right">
                 <nav>
                     <ul class="main-nav">
@@ -534,12 +721,6 @@
                         <li><a href="#" class="nav-link">Contact Us</a></li>
                     </ul>
                 </nav>
-                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                    <span class="toggle-knob">
-                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    </span>
-                </button>
             </div>
         </div>
     </header>
@@ -556,6 +737,10 @@
                     <div class="author-details">
                         <span class="name">ACM-W Editorial Board</span>
                         <span class="date">July 20, 2026</span>
+                        <div class="author-bio-popup">
+                            <h4>ACM-W Editorial Board</h4>
+                            <p>Curating tech insights, devlogs, and chapter highlights to empower women in computing at BITS Pilani, Hyderabad Campus.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -565,11 +750,18 @@
         </div>
 
         <div class="filter-container">
-            <div class="filter-pills">
-                <button class="pill active">All</button>
-                <button class="pill">Member Posts</button>
-                <button class="pill">News Explainers</button>
-                <button class="pill">STEM Highlights</button>
+            <div class="filter-left-group">
+                <div class="filter-pills">
+                    <button class="pill active">All</button>
+                    <button class="pill">Member Posts</button>
+                    <button class="pill">News Explainers</button>
+                    <button class="pill">STEM Highlights</button>
+                </div>
+                <select class="sort-select" aria-label="Sort or filter by read time">
+                    <option value="recent">Most Recent</option>
+                    <option value="quick">Quick Reads (&lt; 5 min)</option>
+                    <option value="long">Deep Dives (&gt; 10 min)</option>
+                </select>
             </div>
             <div class="status-legend">
                 <span><span class="status-dot dot-unread"></span>Unread</span>
@@ -577,10 +769,14 @@
             </div>
         </div>
 
-        <h2 class="section-title">Top Stories</h2>
+        <div class="section-header-row">
+            <div class="bars"></div>
+            <h2 class="section-title-mono">Top Stories</h2>
+        </div>
+        
         <div class="stories-grid">
             
-            <div class="story-card">
+            <div class="story-card" data-read-time="12">
                 <span class="indicator-dot dot-unread"></span>
                 <div class="card-image-container">
                     <img src="path_to_card1_image.jpg" alt="Hardware Warning System">
@@ -601,7 +797,7 @@
                 </div>
             </div>
 
-            <div class="story-card">
+            <div class="story-card" data-read-time="9">
                 <span class="indicator-dot dot-read"></span>
                 <div class="card-image-container">
                     <img src="path_to_card2_image.jpg" alt="Quantum Algorithms">
@@ -622,7 +818,7 @@
                 </div>
             </div>
 
-            <div class="story-card">
+            <div class="story-card" data-read-time="4">
                 <span class="indicator-dot dot-unread"></span>
                 <div class="card-image-container">
                     <img src="path_to_card3_image.jpg" alt="Pioneers of Code">
@@ -638,7 +834,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More &rarr;</a>
-                        <span class="read-time">7 MIN READ</span>
+                        <span class="read-time">4 MIN READ</span>
                     </div>
                 </div>
             </div>
@@ -649,6 +845,7 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">
+                <div class="bars"></div>
                 <h3>ACM-W BPHC</h3>
                 <p>Student chapter - BITS Pilani, Hyderabad Campus</p>
                 <span class="muted">Empowering women in technology</span>
