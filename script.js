@@ -279,3 +279,13 @@ projectFiltersEl.addEventListener("click", (e) => {
     card.style.display = (filter === "All" || card.dataset.tag === filter) ? "" : "none";
   });
 });
+
+ /*6. ABOUT PAGE- drop downs*/
+document.querySelectorAll('.about-inner').forEach(inner => {
+    const inside = inner.nextElementSibling; // the .tab-body right after this header
+ 
+    inner.addEventListener('click', () => {
+      inner.classList.toggle('active');
+      inside.classList.toggle('open');
+    });
+  });
