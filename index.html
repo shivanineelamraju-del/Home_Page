@@ -43,11 +43,17 @@
     <nav class="main-nav" id="mainNav">
       <a href="#about" data-page="about" class="nav-link">About</a>
 
-      <a href="#domains" data-page="home" data-anchor="domains" class="nav-link">Domains</a>
+      <div class="nav-dropdown">
+        <button class="nav-link nav-drop-btn" id="domainsBtn" aria-haspopup="true" aria-expanded="false">Domains <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button>
+        <div class="dropdown-panel" id="domainsPanel">
+          <a href="#domain-technical" data-page="domain-technical"><strong>Technical</strong><span>Workshops, project squads, open-source sprints and the tech behind chapter tools.</span></a><a href="#domain-corporate" data-page="domain-corporate"><strong>Corporate & Sponsorship</strong><span>Partnerships, sponsorships and industry connects that fund and power our events.</span></a><a href="#domain-design" data-page="domain-design"><strong>Design</strong><span>Visual identity, event collateral, posters, merchandise and everything on-brand.</span></a><a href="#domain-content" data-page="domain-content"><strong>Content & Media</strong><span>Copywriting, photography, reels and the chapter's blog & newsletter.</span></a><a href="#domain-outreach" data-page="domain-outreach"><strong>Marketing & Outreach</strong><span>Growing the community — social media, campus outreach and inter-college relations.</span></a><a href="#domain-management" data-page="domain-management"><strong>Management & Events</strong><span>Logistics, budgets, venue bookings and making sure every event actually happens.</span></a>
+        </div>
+      </div>
+
       <a href="#events" data-page="events" class="nav-link">Events</a>
       <a href="#fests" data-page="fests" class="nav-link">Fests</a>
       <a href="#projects" data-page="projects" class="nav-link">Projects &amp; Blogs</a>
-      <a href="contact_us_page/contact.html" class="nav-link">Contact Us</a>
+      <a href="#contact" data-page="contact" class="nav-link">Contact Us</a>
     </nav>
   </div>
 </header>
@@ -73,7 +79,7 @@
                 <div class="cube-face cube-front" data-page="home">
                   <img class="hero-logo" src="logo.png" alt="ACM-W — Association for Computing Machinery, for Women">
                 </div>
-                <div class="cube-face cube-back"><span class="cube-label">5 Domains</span></div>
+                <div class="cube-face cube-back"><span class="cube-label">6 Domains</span></div>
                 <div class="cube-face cube-right"><span class="cube-label">150+ Members</span></div>
                 <div class="cube-face cube-left"><span class="cube-label cube-label--mono">&gt;_ whoami</span></div>
                 <div class="cube-face cube-top"><span class="cube-label">Est. 2023</span></div>
@@ -82,45 +88,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="domains">
-    <div class="section-inner">
-      <p class="eyebrow"><span class="bars bars--xs"></span> WHAT WE BUILD</p>
-      <h2 class="section-title">Our domains.</h2>
-      <div class="quicklinks-grid">
-        <a class="quicklink-card" href="domain_pages/ml_ai/ml_ai.html">
-          <span class="quicklink-num">01</span>
-          <h3>Machine Learning</h3>
-          <p>Applied ML projects, study sessions and paper reading groups.</p>
-          <span class="quicklink-arrow">Explore →</span>
-        </a>
-        <a class="quicklink-card" href="domain_pages/cc/cc.html">
-          <span class="quicklink-num">02</span>
-          <h3>Competitive Coding</h3>
-          <p>Contest prep, DSA practice and CP study resources.</p>
-          <span class="quicklink-arrow">Explore →</span>
-        </a>
-        <a class="quicklink-card" href="domain_pages/uiux/ui_ux.html">
-          <span class="quicklink-num">03</span>
-          <h3>UI/UX</h3>
-          <p>Design fundamentals, tools, and hands-on project work.</p>
-          <span class="quicklink-arrow">Explore →</span>
-        </a>
-        <a class="quicklink-card" href="domain_pages/web_dev/web_dev.html">
-          <span class="quicklink-num">04</span>
-          <h3>Web Development</h3>
-          <p>Frontend and backend fundamentals, frameworks and projects.</p>
-          <span class="quicklink-arrow">Explore →</span>
-        </a>
-        <a class="quicklink-card" href="domain_pages/app_dev/app_dev.html">
-          <span class="quicklink-num">05</span>
-          <h3>App Development</h3>
-          <p>Mobile app building, from fundamentals to shipped projects.</p>
-          <span class="quicklink-arrow">Explore →</span>
-        </a>
       </div>
     </div>
   </section>
@@ -190,17 +157,57 @@
 
   <section class="section">
     <div class="section-inner">
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>We exist to support, celebrate and grow the community of women in tech on campus — through technical projects, mentorship circles, speaker sessions and events that are open to everyone who believes computing is better when it's built by everyone.</p>
-          <p>The chapter runs on six domains that keep the wheels turning year-round — each with its own bulletin, task board and progress tracker, so members always know what's shipping next.</p>
-          <a href="#domains" data-page="home" data-anchor="domains" class="text-link">See what each domain is working on →</a>
-        </div>
-        <ul class="about-values">
-          <li><span class="bars bars--xs"></span><div><strong>Mentorship</strong><p>Pairing juniors with seniors across every branch, every semester.</p></div></li>
-          <li><span class="bars bars--xs"></span><div><strong>Building</strong><p>Real projects, hackathon squads, and open-source sprints.</p></div></li>
-          <li><span class="bars bars--xs"></span><div><strong>Belonging</strong><p>A room where asking a "basic" question is never awkward.</p></div></li>
-        </ul>
+      
+        
+       <div class="showcase">
+        <div class="desc-container">
+        <div class="desc">
+            <p class="about-values">ACM-W advocates internationally for the full engagement of women in all aspects of the computing field, providing a wide range of programs and services and working in the larger community to advance the contributions of technical women.<br> <br>
+ACM-W at Bits Pilani Hyderabad was formed in the campus on September 2023. Together we aim to build a supportive community where women can openly thrive and shape the future of technology. Our Club is open to all girls who have a passion for technology, regardless of their background or experience.
+            </p>
+</div></div>
+        <div class="about-container">
+            <div class="about">
+                <div class="about-inner">
+                    <span>Who we are</span>
+                </div>
+                    <div class="about-inside">
+                    <p>ACM-W at Bits Hyderabad is a growing community united by curiosity, ambition, and a shared passion for the technical field. Our aim is to create a space where women can code, create and grow together. One project, workshop, and connection at a time.<br> <br>
+We believe that diversity drives innovation, and that the best solutions come from rooms where different perspectives are welcomed and heard. On a campus where girls make up only a small percentage of students, we're building a space where that isn't the case. Where active participation is encouraged, mistakes are part of learning, and every member has a contribution.<br> <br>
+Our members range from first-year students just discovering their interest in tech to seniors mentoring others and leading projects. Regardless of your background or experience, you'll find a supportive community that works together and overcomes challenges.<br> <br>
+Through workshops, hackathons, mentorship and social events, we equip our members with the skills and confidence to thrive in tech and lead the next wave of innovation.</p>
+                    
+                  </p>
+                    </div>
+            </div>
+
+            <div class="about">
+                <div class="about-inner">
+                    
+                    <span>What we do</span></div>
+                    <div class="about-inside">
+                    <p>At ACM-W, we all collaborate together to create different projects and learn from each other.<br> </br>
+                    Workshops & Skill-Building:
+We host hands-on technical workshops covering a variety of domains, no prior experience required. <br><br>
+Hackathons & Project Sprints:
+We organize women only hackathons and build sprints where members team up to design, code, and ship real projects in a short timeframe, turning ideas into working prototypes while building teamwork and technical skills under pressure.
+ <br><br>Speaker Sessions
+ We invite engineers, founders, and researchers from industry to share their journeys, insights, and advice, connecting students to real role models and potential career opportunities.
+ <br><br>Codeflix 
+Every so often, we gather together and all the members code and work on projects while binging a movie.
+</p>
+                    
+                </div>
+            </div>
+
+            <div class="about">
+                <div class="about-inner">
+                    
+                    <span>How we started</span></div>
+                    <div class="about-inside">
+                    <p>3D interfaces projected into reality space</p>
+                    </div>
+            </div
       </div>
     </div>
   </section>
@@ -352,6 +359,384 @@
     </div>
   </section>
 </section>
+
+<section class="page" id="page-domain-technical" data-page-id="domain-technical">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Technical</h1>
+    <p class="page-hero-sub">Workshops, project squads, open-source sprints and the tech behind chapter tools.</p>
+    <div class="domain-crumbs"><a class="domain-crumb is-current" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Workshop</span>
+          <div>
+            <time>12 Jul</time>
+            <h4>Intro to Git & GitHub</h4>
+            <p>Beginner-friendly session for first-years, Library Seminar Hall, 6 PM.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Recruitment</span>
+          <div>
+            <time>08 Jul</time>
+            <h4>Technical domain interviews start</h4>
+            <p>Shortlisted applicants will be contacted by Thursday.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Update</span>
+          <div>
+            <time>01 Jul</time>
+            <h4>Chapter website repo is live</h4>
+            <p>PRs open — ping the domain lead for access.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Build event RSVP micro-site</span>
+          <span class="task-owner">Ananya · Riya</span>
+          <span class="task-due">18 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status todo" title="todo"></span>
+          <span>Set up GitHub org for chapter projects</span>
+          <span class="task-owner">Tanvi</span>
+          <span class="task-due">20 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status done" title="done"></span>
+          <span>Migrate resource drive to shared folder</span>
+          <span class="task-owner">Sneha</span>
+          <span class="task-due">30 Jun</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>Mentorship-matching tool (v2)</strong><span>70%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        </div><div class="progress-item">
+          <div class="progress-top"><strong>Workshop track for AY 26-27</strong><span>40%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-domain-corporate" data-page-id="domain-corporate">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Corporate & Sponsorship</h1>
+    <p class="page-hero-sub">Partnerships, sponsorships and industry connects that fund and power our events.</p>
+    <div class="domain-crumbs"><a class="domain-crumb" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb is-current" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Outreach</span>
+          <div>
+            <time>10 Jul</time>
+            <h4>Sponsorship deck v3 sent to 6 companies</h4>
+            <p>Follow-ups scheduled for next week.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Meeting</span>
+          <div>
+            <time>05 Jul</time>
+            <h4>Call with potential workshop partner</h4>
+            <p>Notes shared in the domain channel.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Finalise fest title-sponsor pitch</span>
+          <span class="task-owner">Meghna</span>
+          <span class="task-due">15 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status todo" title="todo"></span>
+          <span>Draft MOU template for partners</span>
+          <span class="task-owner">Ishita</span>
+          <span class="task-due">22 Jul</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>AY 26-27 sponsorship target</strong><span>35%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-domain-design" data-page-id="domain-design">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Design</h1>
+    <p class="page-hero-sub">Visual identity, event collateral, posters, merchandise and everything on-brand.</p>
+    <div class="domain-crumbs"><a class="domain-crumb" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb is-current" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Deadline</span>
+          <div>
+            <time>14 Jul</time>
+            <h4>Poster drafts due for July workshop</h4>
+            <p>Submit to the design drive by EOD.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Update</span>
+          <div>
+            <time>02 Jul</time>
+            <h4>New chapter brand kit shared</h4>
+            <p>Fonts, colours and logo files now in the shared drive.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status todo" title="todo"></span>
+          <span>Design certificate template</span>
+          <span class="task-owner">Aarohi</span>
+          <span class="task-due">16 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Instagram highlight covers refresh</span>
+          <span class="task-owner">Diya</span>
+          <span class="task-due">12 Jul</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>Fest visual identity</strong><span>55%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+        </div><div class="progress-item">
+          <div class="progress-top"><strong>Merch design round 1</strong><span>20%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-domain-content" data-page-id="domain-content">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Content & Media</h1>
+    <p class="page-hero-sub">Copywriting, photography, reels and the chapter's blog & newsletter.</p>
+    <div class="domain-crumbs"><a class="domain-crumb" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb is-current" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Blog</span>
+          <div>
+            <time>09 Jul</time>
+            <h4>New blog post: 'Why representation in code reviews matters'</h4>
+            <p>Live on the Projects & Blogs tab.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Task</span>
+          <div>
+            <time>03 Jul</time>
+            <h4>Recap reel for June workshop posted</h4>
+            <p>1.2k views in the first day.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Write senate spotlight series</span>
+          <span class="task-owner">Kavya</span>
+          <span class="task-due">19 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status todo" title="todo"></span>
+          <span>Newsletter #4 draft</span>
+          <span class="task-owner">Priyal</span>
+          <span class="task-due">25 Jul</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>Monthly newsletter cadence</strong><span>60%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-domain-outreach" data-page-id="domain-outreach">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Marketing & Outreach</h1>
+    <p class="page-hero-sub">Growing the community — social media, campus outreach and inter-college relations.</p>
+    <div class="domain-crumbs"><a class="domain-crumb" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb is-current" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Campaign</span>
+          <div>
+            <time>11 Jul</time>
+            <h4>Recruitment drive posters up around campus</h4>
+            <p>QR codes lead to the interest form.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Collab</span>
+          <div>
+            <time>04 Jul</time>
+            <h4>Cross-posting with other BPHC clubs confirmed</h4>
+            <p>For the August joint session.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status todo" title="todo"></span>
+          <span>Reach out to school ACM-W chapters for collab</span>
+          <span class="task-owner">Simran</span>
+          <span class="task-due">21 Jul</span>
+        </div><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Freshers' outreach plan</span>
+          <span class="task-owner">Naina</span>
+          <span class="task-due">17 Jul</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>Freshers recruitment funnel</strong><span>45%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-domain-management" data-page-id="domain-management">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> DOMAIN</p>
+    <h1 class="page-hero-title">Management & Events</h1>
+    <p class="page-hero-sub">Logistics, budgets, venue bookings and making sure every event actually happens.</p>
+    <div class="domain-crumbs"><a class="domain-crumb" href="#domain-technical" data-page="domain-technical">Technical</a><a class="domain-crumb" href="#domain-corporate" data-page="domain-corporate">Corporate & Sponsorship</a><a class="domain-crumb" href="#domain-design" data-page="domain-design">Design</a><a class="domain-crumb" href="#domain-content" data-page="domain-content">Content & Media</a><a class="domain-crumb" href="#domain-outreach" data-page="domain-outreach">Marketing & Outreach</a><a class="domain-crumb is-current" href="#domain-management" data-page="domain-management">Management & Events</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="domain-panel">
+        <div class="subtabs">
+          <button class="subtab is-active" data-sub="bulletin">Bulletin</button>
+          <button class="subtab" data-sub="tasks">Tasks</button>
+          <button class="subtab" data-sub="progress">Progress</button>
+        </div>
+
+        <div class="subpanel" data-subpanel="bulletin"><div class="bulletin-item">
+          <span class="bulletin-tag">Logistics</span>
+          <div>
+            <time>13 Jul</time>
+            <h4>Venue confirmed for July workshop</h4>
+            <p>Seminar Hall booked, 6–8 PM.</p>
+          </div>
+        </div><div class="bulletin-item">
+          <span class="bulletin-tag">Finance</span>
+          <div>
+            <time>06 Jul</time>
+            <h4>Q1 budget review complete</h4>
+            <p>Summary shared with senate.</p>
+          </div>
+        </div></div>
+        <div class="subpanel" data-subpanel="tasks" hidden><div class="task-row">
+          <span class="task-status done" title="done"></span>
+          <span>Book auditorium for August talk</span>
+          <span class="task-owner">Vidhi</span>
+          <span class="task-due">28 Jun</span>
+        </div><div class="task-row">
+          <span class="task-status doing" title="doing"></span>
+          <span>Volunteer roster for fest week</span>
+          <span class="task-owner">Rhea</span>
+          <span class="task-due">23 Jul</span>
+        </div></div>
+        <div class="subpanel" data-subpanel="progress" hidden><div class="progress-item">
+          <div class="progress-top"><strong>Fest logistics plan</strong><span>50%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="page-contact" data-page-id="contact">
+  <section class="page-hero">
+    <a href="#home" data-page="home" class="back-link">← Back to home</a>
+    <p class="eyebrow"><span class="bars bars--xs"></span> CONTACT US</p>
+    <h1 class="page-hero-title">Let's talk.</h1>
+    <p class="page-hero-sub">Questions, collab ideas, sponsorships, or just want to say hi? Here's how to reach us.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>Whether you're a prospective member, a fellow student org, or a company looking to partner with us — drop us a line and someone from the chapter will get back to you.</p>
+          <p>Prefer email? Reach us directly at <a class="text-link" href="mailto:acmw@hyderabad.bits-pilani.ac.in">acmw@hyderabad.bits-pilani.ac.in</a>.</p>
+          <a href="#about" data-page="about" class="text-link">Read more about the chapter →</a>
+        </div>
+        <ul class="about-values">
+          <li><span class="bars bars--xs"></span><div><strong>Email</strong><p>acmw@hyderabad.bits-pilani.ac.in</p></div></li>
+          <li><span class="bars bars--xs"></span><div><strong>Campus</strong><p>BITS Pilani, Hyderabad Campus</p></div></li>
+          <li><span class="bars bars--xs"></span><div><strong>Socials</strong><p>Instagram &amp; LinkedIn — links in the footer.</p></div></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" onsubmit="return false;">
+        <div class="field">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Send message</button>
+      </form>
+    </div>
+  </section>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -361,6 +746,17 @@
       <p>ACM-W BPHC</p>
       <p class="muted">Student chapter · BITS Pilani, Hyderabad Campus</p>
     </div>
+    <div class="footer-links">
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:acmw@hyderabad.bits-pilani.ac.in">Email us</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <a href="#contact" data-page="contact">Get in touch →</a>
+      </div>
     </div>
   </div>
   <p class="footer-copy">© <span id="year"></span> ACM-W, BITS Pilani Hyderabad Campus. Built by the chapter, for the chapter.</p>
