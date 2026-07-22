@@ -396,46 +396,235 @@ Every so often, we gather together and all the members code and work on projects
   <section class="page-hero">
     <p class="eyebrow"><span class="bars bars--xs"></span> PROJECTS &amp; BLOGS</p>
     <h1 class="page-hero-title">Things we've shipped and written.</h1>
-    <p class="page-hero-sub">Chapter projects, member blog posts and articles — filter by type below.</p>
+    <p class="page-hero-sub">Chapter projects, member blog posts and articles — filter, sort, and dive in.</p>
   </section>
 
   <section class="section">
     <div class="section-inner">
-      <div class="filter-row" id="projectFilters"><button class="filter-chip is-active" data-tag="All">All</button><button class="filter-chip" data-tag="Project">Project</button><button class="filter-chip" data-tag="Blog">Blog</button><button class="filter-chip" data-tag="Article">Article</button></div>
-      <div class="projects-grid" id="projectsGrid"><div class="project-card" data-tag="Project">
-      <span class="project-tag">Project</span>
-      <h3>Mentorship Matching Tool</h3>
-      <p>An internal tool pairing new members with senior mentors based on interests and branch.</p>
-      <a href="#">Read more →</a>
-    </div><div class="project-card" data-tag="Blog">
-      <span class="project-tag">Blog</span>
-      <h3>Why representation in code reviews matters</h3>
-      <p>A member reflects on culture-building in engineering teams.</p>
-      <a href="#">Read more →</a>
-    </div><div class="project-card" data-tag="Project">
-      <span class="project-tag">Project</span>
-      <h3>Workshop Signup Bot</h3>
-      <p>A lightweight bot automating RSVP and reminders for chapter workshops.</p>
-      <a href="#">Read more →</a>
-    </div><div class="project-card" data-tag="Article">
-      <span class="project-tag">Article</span>
-      <h3>Notes from the Inter-chapter Summit 2025</h3>
-      <p>Highlights and takeaways from last year's multi-campus summit.</p>
-      <a href="#">Read more →</a>
-    </div><div class="project-card" data-tag="Blog">
-      <span class="project-tag">Blog</span>
-      <h3>A beginner's guide to open source</h3>
-      <p>Where to start contributing, written by our Technical domain.</p>
-      <a href="#">Read more →</a>
-    </div><div class="project-card" data-tag="Project">
-      <span class="project-tag">Project</span>
-      <h3>Chapter Resource Hub</h3>
-      <p>A single shared drive structure for all domain resources — now used chapter-wide.</p>
-      <a href="#">Read more →</a>
-    </div></div>
+
+      <div class="spotlight-card">
+        <div class="spotlight-content">
+          <span class="tag">Spotlight</span>
+          <h2 class="spotlight-title">The Future of Tech: Key Leadership Strategies for 2026</h2>
+          <p>Examining the major trends and strategies shaping the technology landscape this year, from deep-learning transformations to building inclusive engineering pipelines within our chapter.</p>
+          <div class="author-info">
+            <div class="avatar">AW</div>
+            <div class="author-details" tabindex="0">
+              <span class="name">ACM-W Editorial Board</span>
+              <span class="date">July 20, 2026</span>
+              <div class="author-bio-popup">
+                <h4>ACM-W Editorial Board</h4>
+                <p>Curating tech insights, devlogs, and chapter highlights to empower women in computing at BITS Pilani, Hyderabad Campus.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="spotlight-image-container" style="background:linear-gradient(135deg, var(--grad-2), var(--grad-3));"></div>
+      </div>
+
+      <div class="filter-container">
+        <div class="filter-left-group">
+          <div class="filter-pills" id="projectFilters">
+            <button class="pill is-active" data-tag="All">All</button>
+            <button class="pill" data-tag="Project">Project</button>
+            <button class="pill" data-tag="Blog">Blog</button>
+            <button class="pill" data-tag="Article">Article</button>
+          </div>
+          <select class="sort-select" id="blogSort" aria-label="Filter by read time">
+            <option value="recent">Most Recent</option>
+            <option value="quick">Quick Reads (&lt; 5 min)</option>
+            <option value="long">Deep Dives (&gt; 10 min)</option>
+          </select>
+        </div>
+        <div class="status-legend">
+          <span><span class="status-dot dot-unread"></span>Unread</span>
+          <span><span class="status-dot dot-read"></span>Read</span>
+        </div>
+      </div>
+
+      <div class="section-header-row">
+        <span class="bars bars--xs"></span>
+        <h2 class="section-title-mono">Top Stories</h2>
+      </div>
+
+      <div class="stories-grid" id="projectsGrid">
+
+        <div class="story-card" data-tag="Project" data-read-time="7">
+          <span class="indicator-dot dot-unread"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-1), var(--grad-2));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Community</span>
+                <span class="badge badge-member">Project</span>
+              </div>
+              <h3>Mentorship Matching Tool</h3>
+              <p>An internal tool pairing new members with senior mentors based on interests and branch.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">7 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Blog" data-read-time="6">
+          <span class="indicator-dot dot-read"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-3), var(--grad-4));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Culture</span>
+                <span class="badge badge-news">Blog</span>
+              </div>
+              <h3>Why representation in code reviews matters</h3>
+              <p>A member reflects on culture-building in engineering teams.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">6 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Project" data-read-time="5">
+          <span class="indicator-dot dot-unread"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-2), var(--grad-4));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Automation</span>
+                <span class="badge badge-member">Project</span>
+              </div>
+              <h3>Workshop Signup Bot</h3>
+              <p>A lightweight bot automating RSVP and reminders for chapter workshops.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">5 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Article" data-read-time="11">
+          <span class="indicator-dot dot-read"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-1), var(--grad-3));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Summit</span>
+                <span class="badge badge-stem">Article</span>
+              </div>
+              <h3>Notes from the Inter-chapter Summit 2025</h3>
+              <p>Highlights and takeaways from last year's multi-campus summit.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">11 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Blog" data-read-time="4">
+          <span class="indicator-dot dot-unread"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-4), var(--grad-1));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Open Source</span>
+                <span class="badge badge-news">Blog</span>
+              </div>
+              <h3>A beginner's guide to open source</h3>
+              <p>Where to start contributing, written by our Technical domain.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">4 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Project" data-read-time="8">
+          <span class="indicator-dot dot-read"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-3), var(--grad-1));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Ops</span>
+                <span class="badge badge-member">Project</span>
+              </div>
+              <h3>Chapter Resource Hub</h3>
+              <p>A single shared drive structure for all domain resources — now used chapter-wide.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">8 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Project" data-read-time="12">
+          <span class="indicator-dot dot-unread"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-2), var(--grad-3));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Prism</span>
+                <span class="badge badge-member">Project</span>
+              </div>
+              <h3>My Journey Building a Multi-Sensor Hardware Warning System</h3>
+              <p>A step-by-step devlog detailing the collaborative design and debugging process of our recent induction task.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">12 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Article" data-read-time="9">
+          <span class="indicator-dot dot-read"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-4), var(--grad-2));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Algorithms</span>
+                <span class="badge badge-stem">Article</span>
+              </div>
+              <h3>Demystifying the Latest Breakthroughs in Quantum Algorithms</h3>
+              <p>Breaking down recent industry announcements regarding qubit stability and dual-control Toffoli gate execution.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">9 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card" data-tag="Blog" data-read-time="4">
+          <span class="indicator-dot dot-unread"></span>
+          <div class="card-image-container" style="background:linear-gradient(135deg, var(--grad-1), var(--grad-4));"></div>
+          <div class="card-body">
+            <div>
+              <div class="card-top">
+                <span class="category-label">Diversity</span>
+                <span class="badge badge-news">Blog</span>
+              </div>
+              <h3>Pioneers of Code: Celebrating Margaret Hamilton and Grace Hopper</h3>
+              <p>A historical deep-dive into the foundational engineering contributions made by women in early computational science.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="read-more">Read more →</a>
+              <span class="read-time">4 MIN READ</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 </section>
+
 
 </main>
 
