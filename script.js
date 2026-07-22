@@ -323,3 +323,90 @@ document.querySelectorAll('.about-inner').forEach(inner => {
       inside.classList.toggle('open');
     });
   });
+
+/* ---------------------------------------------------
+   7. FESTS PAGE — click a fest to open its detail panel
+   with two switchable views: About the event / Gallery.
+   Fill in real dates, times, presenters and photos below
+   as they're confirmed for each fest.
+   --------------------------------------------------- */
+const festData = {
+  atmos2024: {
+    title: "ATMOS 2024",
+    date: "TBA",
+    time: "TBA",
+    presenter: "TBA",
+    description: "ACM-W ran a women-in-tech panel and a beginner hackathon track during ATMOS 2024."
+  },
+  techweek2024: {
+    title: "Tech Week 2024",
+    date: "TBA",
+    time: "TBA",
+    presenter: "TBA",
+    description: "Chapter sessions and activities held as part of Tech Week 2024."
+  },
+  atmos2025: {
+    title: "ATMOS 2025",
+    date: "TBA",
+    time: "TBA",
+    presenter: "TBA",
+    description: "ACM-W's panel and hackathon track during ATMOS 2025."
+  },
+  atmos2026: {
+    title: "ATMOS 2026",
+    date: "TBA",
+    time: "TBA",
+    presenter: "TBA",
+    description: "ACM-W's panel and hackathon track during ATMOS 2026."
+  }
+};
+
+const festDetailEl = document.getElementById("festDetail");
+const festDetailTitleEl = document.getElementById("festDetailTitle");
+const festAboutPanelEl = document.getElementById("festAboutPanel");
+const festGalleryPanelEl = document.getElementById("festGalleryPanel");
+
+function renderFestAbout(fest){
+  festAboutPanelEl.innerHTML = `
+    <p class="fest-about-meta"><strong>Date:</strong> ${fest.date}</p>
+    <p class="fest-about-meta"><strong>Time:</strong> ${fest.time}</p>
+    <p class="fest-about-meta"><strong>Presenter:</strong> ${fest.presenter}</p>
+    <p>${fest.description}</p>
+  `;
+}
+
+function renderFestGallery(){
+  festGalleryPanelEl.innerHTML = `
+    <div class="fest-gallery-grid">
+      <div class="fest-gallery-placeholder">Photo coming soon</div>
+      <div class="fest-gallery-placeholder">Photo coming soon</div>
+      <div class="fest-gallery-placeholder">Photo coming soon</div>
+    </div>
+  `;
+}
+
+document.querySelectorAll(".fest-select").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const fest = festData[btn.dataset.fest];
+    if(!fest) return;
+    festDetailTitleEl.textContent = fest.title;
+    renderFestAbout(fest);
+    renderFestGallery();
+    festDetailEl.querySelectorAll(".fest-detail-tabs .pill").forEach(p => p.classList.toggle("is-active", p.dataset.view === "about"));
+    festAboutPanelEl.hidden = false;
+    festGalleryPanelEl.hidden = true;
+    festDetailEl.hidden = false;
+    requestAnimationFrame(() => festDetailEl.scrollIntoView({behavior:"smooth", block:"nearest"}));
+  });
+});
+
+if(festDetailEl){
+  festDetailEl.querySelectorAll(".fest-detail-tabs .pill").forEach(tabBtn => {
+    tabBtn.addEventListener("click", () => {
+      festDetailEl.querySelectorAll(".fest-detail-tabs .pill").forEach(p => p.classList.toggle("is-active", p === tabBtn));
+      const view = tabBtn.dataset.view;
+      festAboutPanelEl.hidden = view !== "about";
+      festGalleryPanelEl.hidden = view !== "gallery";
+    });
+  });
+}
