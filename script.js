@@ -140,8 +140,6 @@ navToggle.addEventListener("click", () => {
   navToggle.setAttribute("aria-expanded", open);
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
 /* ---------------------------------------------------
    3. SCROLL-REVEAL — fades/slides section titles and
    cards into view as the user scrolls to them.
@@ -149,7 +147,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
    everything else reveals once and stays put.
    --------------------------------------------------- */
 const revealOnceTargets = document.querySelectorAll(
-  ".section-title, .page-hero-title, .project-card, .fest-card, .quicklink-card"
+  ".section-title, .page-hero-title, .project-card, .fest-card, .quicklink-card, .flip-card"
 );
 const revealReplayTargets = document.querySelectorAll(
   ".testimonial-card, .senate-card"
