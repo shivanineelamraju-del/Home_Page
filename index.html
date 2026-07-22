@@ -313,6 +313,27 @@
           <div id="dayDetail" class="day-detail" hidden></div>
         </div>
       </div>
+
+      <div class="event-category-block">
+        <h3 class="list-heading">Internal Events</h3>
+        <div class="event-item">
+          <h4>Codeflix</h4>
+          <p>Details coming soon.</p>
+        </div>
+      </div>
+
+      <div class="event-category-block">
+        <h3 class="list-heading">Workshops</h3>
+        <div class="event-item">
+          <h4>App Dev Workshop</h4>
+          <p>Details coming soon.</p>
+        </div>
+      </div>
+
+      <div class="event-category-block">
+        <h3 class="list-heading">Inductions</h3>
+        <p class="induction-note">Inductions are currently closed.</p>
+      </div>
     </div>
   </section>
 </section>
@@ -326,22 +347,44 @@
 
   <section class="section">
     <div class="section-inner">
-      <div class="fests-grid"><div class="fest-card">
-      <h3>ATMOS</h3>
-      <p>ACM-W runs a women-in-tech panel and a beginner hackathon track during ATMOS every year.</p>
-      <span class="fest-meta">Technical fest · BPHC</span>
-    </div><div class="fest-card">
-      <h3>Fervour</h3>
-      <p>Chapter booth at the freshers' fest with interactive coding-for-everyone activities and merch.</p>
-      <span class="fest-meta">Freshers fest · BPHC</span>
-    </div><div class="fest-card">
-      <h3>Workshops</h3>
-      <p>Hands-on sessions run by the chapter through the year — Git &amp; GitHub, ML basics, and more.</p>
-      <span class="fest-meta">Recurring · BPHC</span>
-    </div></div>
+      <div class="fests-grid">
+        <button class="fest-card fest-select" type="button" data-fest="atmos2024">
+          <h3>ATMOS 2024</h3>
+          <p>Tap to see the event details and photo gallery.</p>
+          <span class="fest-meta">Technical fest · BPHC</span>
+        </button>
+        <button class="fest-card fest-select" type="button" data-fest="techweek2024">
+          <h3>Tech Week 2024</h3>
+          <p>Tap to see the event details and photo gallery.</p>
+          <span class="fest-meta">Chapter week · BPHC</span>
+        </button>
+        <button class="fest-card fest-select" type="button" data-fest="atmos2025">
+          <h3>ATMOS 2025</h3>
+          <p>Tap to see the event details and photo gallery.</p>
+          <span class="fest-meta">Technical fest · BPHC</span>
+        </button>
+        <button class="fest-card fest-select" type="button" data-fest="atmos2026">
+          <h3>ATMOS 2026</h3>
+          <p>Tap to see the event details and photo gallery.</p>
+          <span class="fest-meta">Technical fest · BPHC</span>
+        </button>
+      </div>
+
+      <div class="fest-detail" id="festDetail" hidden>
+        <div class="fest-detail-head">
+          <h3 id="festDetailTitle"></h3>
+          <div class="fest-detail-tabs">
+            <button class="pill is-active" type="button" data-view="about">About the event</button>
+            <button class="pill" type="button" data-view="gallery">Gallery</button>
+          </div>
+        </div>
+        <div class="fest-detail-panel" id="festAboutPanel"></div>
+        <div class="fest-detail-panel" id="festGalleryPanel" hidden></div>
+      </div>
     </div>
   </section>
 </section>
+
 
 <section class="page" id="page-projects" data-page-id="projects">
   <section class="page-hero">

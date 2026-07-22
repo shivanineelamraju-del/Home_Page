@@ -490,6 +490,37 @@ html[data-theme="dark"] .theme-toggle .icon-moon{display:block;}
 .fest-card h3{font-size:1.3rem; margin-bottom:8px; position:relative;}
 .fest-card p{color:#E8B8CE; position:relative; font-size:0.9rem;}
 .fest-meta{font-family:var(--font-mono); font-size:0.72rem; color:var(--amber); position:relative; display:block; margin-top:14px;}
+.fest-card.fest-select{
+  border:none; width:100%; text-align:left; font:inherit; cursor:pointer;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.fest-card.fest-select:hover, .fest-card.fest-select:focus-visible{
+  transform:translateY(-4px); box-shadow:0 20px 40px var(--shadow);
+}
+.fest-detail{
+  margin-top:32px; background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius); padding:28px;
+}
+.fest-detail-head{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:20px;}
+.fest-detail-head h3{font-size:1.25rem; margin:0;}
+.fest-detail-tabs{display:flex; gap:10px;}
+.fest-about-meta{font-family:var(--font-mono); font-size:0.82rem; color:var(--muted); margin:0 0 6px;}
+.fest-gallery-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:14px; margin-top:4px;}
+.fest-gallery-placeholder{
+  aspect-ratio:4/3; border-radius:10px; background:linear-gradient(135deg, var(--paper-tint), var(--line));
+  display:flex; align-items:center; justify-content:center; text-align:center; padding:10px;
+  font-family:var(--font-mono); font-size:0.75rem; color:var(--muted);
+}
+
+/* ---------- events: category sections ---------- */
+.event-category-block{margin-top:40px;}
+.event-item{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:20px; margin-top:12px;
+}
+.event-item h4{font-size:1.05rem; margin-bottom:6px;}
+.event-item p{font-size:0.88rem; color:var(--muted); margin:0;}
+.induction-note{font-family:var(--font-mono); font-size:0.9rem; color:var(--muted); margin-top:12px;}
 
 /* ---------- projects ---------- */
 /* ---------- Projects & Blogs: spotlight card ---------- */
