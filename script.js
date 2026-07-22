@@ -147,7 +147,7 @@ navToggle.addEventListener("click", () => {
    everything else reveals once and stays put.
    --------------------------------------------------- */
 const revealOnceTargets = document.querySelectorAll(
-  ".section-title, .page-hero-title, .project-card, .fest-card, .quicklink-card, .flip-card"
+  ".section-title, .page-hero-title, .story-card, .fest-card, .quicklink-card, .flip-card, .spotlight-card"
 );
 const revealReplayTargets = document.querySelectorAll(
   ".testimonial-card, .senate-card"
@@ -237,17 +237,49 @@ document.getElementById("calNext").addEventListener("click", () => {
 renderCalendar();
 
 /* ---------------------------------------------------
-   5. PROJECTS & BLOGS — tag filter
+   5. PROJECTS & BLOGS — pill filter + read-time sort +
+   mark-as-read on click
    --------------------------------------------------- */
 const projectFiltersEl = document.getElementById("projectFilters");
-projectFiltersEl.addEventListener("click", (e) => {
-  const btn = e.target.closest(".filter-chip");
-  if(!btn) return;
-  projectFiltersEl.querySelectorAll(".filter-chip").forEach(b => b.classList.toggle("is-active", b===btn));
-  const filter = btn.dataset.tag;
-  document.querySelectorAll("#projectsGrid .project-card").forEach(card => {
-    card.style.display = (filter === "All" || card.dataset.tag === filter) ? "" : "none";
+const blogSortEl = document.getElementById("blogSort");
+const storyCards = document.querySelectorAll("#projectsGrid .story-card");
+let activeTag = "All";
+
+function applyStoryFilters(){
+  const sortValue = blogSortEl ? blogSortEl.value : "recent";
+  storyCards.forEach(card => {
+    const tagMatch = activeTag === "All" || card.dataset.tag === activeTag;
+    const readTime = Number(card.dataset.readTime);
+    let timeMatch = true;
+    if(sortValue === "quick") timeMatch = readTime < 5;
+    if(sortValue === "long") timeMatch = readTime > 10;
+    card.style.display = (tagMatch && timeMatch) ? "" : "none";
   });
+}
+
+if(projectFiltersEl){
+  projectFiltersEl.addEventListener("click", (e) => {
+    const btn = e.target.closest(".pill");
+    if(!btn) return;
+    projectFiltersEl.querySelectorAll(".pill").forEach(b => b.classList.toggle("is-active", b===btn));
+    activeTag = btn.dataset.tag;
+    applyStoryFilters();
+  });
+}
+
+if(blogSortEl){
+  blogSortEl.addEventListener("change", applyStoryFilters);
+}
+
+storyCards.forEach(card => {
+  const readMoreLink = card.querySelector(".read-more");
+  const dot = card.querySelector(".indicator-dot");
+  if(readMoreLink && dot){
+    readMoreLink.addEventListener("click", () => {
+      dot.classList.remove("dot-unread");
+      dot.classList.add("dot-read");
+    });
+  }
 });
 
  /*6. ABOUT PAGE- drop downs*/
