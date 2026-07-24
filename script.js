@@ -152,7 +152,7 @@ const revealOnceTargets = document.querySelectorAll(
   ".section-title, .page-hero-title, .story-card, .fest-card, .quicklink-card, .flip-card, .spotlight-card, .calendar-card, .about-lede, .about"
 );
 const revealReplayTargets = document.querySelectorAll(
-  ".testimonial-card, .senate-card"
+  ".testimonial-card, .senate-card, .event-item"
 );
 const allRevealTargets = [...revealOnceTargets, ...revealReplayTargets];
 allRevealTargets.forEach((el, i) => {
