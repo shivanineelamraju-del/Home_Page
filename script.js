@@ -145,14 +145,15 @@ document.getElementById("year").textContent = new Date().getFullYear();
 /* ---------------------------------------------------
    3. SCROLL-REVEAL — fades/slides section titles and
    cards into view as the user scrolls to them.
-   Testimonials and senate cards replay on every pass;
+   Testimonials, senate, event, domain (quicklink) and
+   "more to explore" (flip) cards replay on every pass;
    everything else reveals once and stays put.
    --------------------------------------------------- */
 const revealOnceTargets = document.querySelectorAll(
-  ".section-title, .page-hero-title, .story-card, .fest-card, .quicklink-card, .flip-card, .spotlight-card, .calendar-card, .about-lede, .about"
+  ".section-title, .page-hero-title, .story-card, .fest-card, .spotlight-card, .calendar-card, .about-lede, .about"
 );
 const revealReplayTargets = document.querySelectorAll(
-  ".testimonial-card, .senate-card, .event-item"
+  ".testimonial-card, .senate-card, .event-item, .quicklink-card, .flip-card"
 );
 const allRevealTargets = [...revealOnceTargets, ...revealReplayTargets];
 allRevealTargets.forEach((el, i) => {
