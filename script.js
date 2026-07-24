@@ -331,6 +331,67 @@ document.querySelectorAll('.about-inner').forEach(inner => {
   });
 
 /* ---------------------------------------------------
+   6b. SLIDING IMAGE GALLERIES
+   One small builder function reused for the Events page
+   galleries (App Dev Workshop, Codeflix) and for any fest
+   that has real photos (see galleryData + renderFestGallery
+   below). Pass it a container element and an array of
+   {src, alt} objects.
+   --------------------------------------------------- */
+const galleryData = {
+  appdev: [
+    {src:"gallery-images/appdev-1.jpg", alt:"App Dev Workshop poster — 10th Feb, F-109"},
+    {src:"gallery-images/appdev-2.jpg", alt:"App Dev Workshop 2026 — members coding along in a workshop room"},
+    {src:"gallery-images/appdev-3.jpg", alt:"App Dev Workshop — Flutter session projected on screen"}
+  ],
+  codeflix: [
+    {src:"gallery-images/codeflix-1.jpg", alt:"Codeflix — a movie playing on the projector while members code"},
+    {src:"gallery-images/codeflix-2.jpg", alt:"Codeflix '24 — members coding alongside a film screening"},
+    {src:"gallery-images/codeflix-3.jpg", alt:"Codeflix '26 — Tangled playing during a coding session"}
+  ],
+  atmos2024: [
+    {src:"gallery-images/atmos2024-1.jpg", alt:"Pre-ATMOS hackathon workshop with alumni, held over a video call"},
+    {src:"gallery-images/atmos2024-2.jpg", alt:"Hackathon '24 in progress, room J219"},
+    {src:"gallery-images/atmos2024-3.jpg", alt:"Hackathon '24 in progress, room J220"},
+    {src:"gallery-images/atmos2024-4.jpg", alt:"ACM-W Bingo icebreaker activity at ATMOS 2024"},
+    {src:"gallery-images/atmos2024-5.jpg", alt:"ACM-W team at Hackathon '24, ATMOS"}
+  ]
+};
+
+function buildImageSlider(container, images){
+  if(!container || !images || !images.length) return;
+  let idx = 0;
+  container.innerHTML = `
+    <div class="img-slider-viewport">
+      <div class="img-slider-track">
+        ${images.map(im => `<div class="img-slide"><img src="${im.src}" alt="${im.alt}" loading="lazy"></div>`).join("")}
+      </div>
+    </div>
+    ${images.length > 1 ? `
+    <button class="img-slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+    <button class="img-slider-btn next" type="button" aria-label="Next photo">›</button>
+    <div class="img-slider-dots">
+      ${images.map((_, i) => `<button class="img-slider-dot${i === 0 ? " is-active" : ""}" type="button" data-idx="${i}" aria-label="Go to photo ${i + 1}"></button>`).join("")}
+    </div>` : ""}
+  `;
+  const track = container.querySelector(".img-slider-track");
+  const dots = container.querySelectorAll(".img-slider-dot");
+  function goTo(i){
+    idx = (i + images.length) % images.length;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    dots.forEach((d, di) => d.classList.toggle("is-active", di === idx));
+  }
+  const prevBtn = container.querySelector(".img-slider-btn.prev");
+  const nextBtn = container.querySelector(".img-slider-btn.next");
+  if(prevBtn) prevBtn.addEventListener("click", () => goTo(idx - 1));
+  if(nextBtn) nextBtn.addEventListener("click", () => goTo(idx + 1));
+  dots.forEach(d => d.addEventListener("click", () => goTo(Number(d.dataset.idx))));
+}
+
+buildImageSlider(document.getElementById("galleryAppDev"), galleryData.appdev);
+buildImageSlider(document.getElementById("galleryCodeflix"), galleryData.codeflix);
+
+/* ---------------------------------------------------
    7. FESTS PAGE — click a fest to open its detail panel
    with two switchable views: About the event / Gallery.
    Fill in real dates, times, presenters and photos below
@@ -381,14 +442,20 @@ function renderFestAbout(fest){
   `;
 }
 
-function renderFestGallery(){
-  festGalleryPanelEl.innerHTML = `
-    <div class="fest-gallery-grid">
-      <div class="fest-gallery-placeholder">Photo coming soon</div>
-      <div class="fest-gallery-placeholder">Photo coming soon</div>
-      <div class="fest-gallery-placeholder">Photo coming soon</div>
-    </div>
-  `;
+function renderFestGallery(festKey){
+  const images = galleryData[festKey];
+  if(images && images.length){
+    festGalleryPanelEl.innerHTML = `<div class="img-slider" id="festImgSlider"></div>`;
+    buildImageSlider(document.getElementById("festImgSlider"), images);
+  } else {
+    festGalleryPanelEl.innerHTML = `
+      <div class="fest-gallery-grid">
+        <div class="fest-gallery-placeholder">Photo coming soon</div>
+        <div class="fest-gallery-placeholder">Photo coming soon</div>
+        <div class="fest-gallery-placeholder">Photo coming soon</div>
+      </div>
+    `;
+  }
 }
 
 document.querySelectorAll(".fest-select").forEach(btn => {
@@ -397,7 +464,7 @@ document.querySelectorAll(".fest-select").forEach(btn => {
     if(!fest) return;
     festDetailTitleEl.textContent = fest.title;
     renderFestAbout(fest);
-    renderFestGallery();
+    renderFestGallery(btn.dataset.fest);
     festDetailEl.querySelectorAll(".fest-detail-tabs .pill").forEach(p => p.classList.toggle("is-active", p.dataset.view === "about"));
     festAboutPanelEl.hidden = false;
     festGalleryPanelEl.hidden = true;
