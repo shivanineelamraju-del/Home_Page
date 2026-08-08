@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneers of Code | ACM-W BPHC</title>
+    
+    <script>
+        if (localStorage.getItem('acmw-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Fraunces:ital,wght@1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Design tokens matched to home page */
+        :root {
+            --ink: #12327A; --ink-soft: #1B45A8; --paper: #FFFFFF; --paper-tint: #EAF3FF;
+            --surface: #FFFFFF; --header-bg: rgba(251,249,255,0.9); --magenta: #FF4FA6;
+            --violet: #1E5AFF; --amber: #4FC3F7; --teal: #0B3D91; --muted: #5B6B85;
+            --line: #DCE7F5; --shadow: rgba(11,11,13,0.09);
+            
+            --navy-fixed: #0A1730; --navy-fixed-soft: #142A4E;
+            
+            --font-display: 'Space Grotesk', 'Poppins', sans-serif;
+            --font-accent: 'Fraunces', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius: 14px; --container: 1180px;
+        }
+
+        html[data-theme="dark"] {
+            --ink: #F3F6FF; --ink-soft: #C9D6F5; --paper: #0A1730; --paper-tint: rgba(255,255,255,0.06);
+            --surface: #12275A; --header-bg: rgba(9,19,40,0.86); --violet: #6E93FF;
+            --teal: #45D6C9; --muted: #93A3C6; 
+            --line: rgba(255, 255, 255, 0.05); /* Fixed subtle border in dark mode */
+            --shadow: rgba(0,0,0,0.35);
+        }
+
+        body {
+            margin: 0; font-family: var(--font-body); color: var(--ink);
+            background: var(--paper); -webkit-font-smoothing: antialiased;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
+        p { margin: 0 0 1em; color: var(--muted); line-height: 1.7; }
+        a { color: inherit; text-decoration: none; }
+        
+        /* Navbar */
+        .site-header { position: sticky; top: 0; z-index: 50; background: var(--header-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .nav-wrap { max-width: var(--container); margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand-container { display: flex; align-items: center; gap: 20px; }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .main-nav { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+        .nav-link { font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); padding: 8px 12px; border-radius: 8px; font-family: var(--font-body); transition: background 0.15s ease, color 0.15s ease;}
+        .nav-link:hover, .nav-link.is-active { background: var(--paper-tint); color: var(--magenta); }
+
+        /* Theme Toggle Button for the Article Page */
+        .theme-toggle {
+            position:relative; display:inline-flex; align-items:center;
+            width:52px; height:28px; padding:3px; border-radius:999px; flex-shrink:0;
+            border:1px solid var(--line); background:var(--paper-tint);
+            transition:background 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+        }
+        .theme-toggle .toggle-knob {
+            width:20px; height:20px; border-radius:50%; background:var(--ink);
+            display:flex; align-items:center; justify-content:center; color:var(--paper);
+            transform:translateX(0); transition:transform 0.25s cubic-bezier(.22,1,.36,1), background 0.2s ease;
+        }
+        html[data-theme="dark"] .theme-toggle .toggle-knob {transform:translateX(24px);}
+        .theme-toggle svg {width:13px; height:13px;}
+        .theme-toggle .icon-moon {display:none;}
+        html[data-theme="dark"] .theme-toggle .icon-sun {display:none;}
+        html[data-theme="dark"] .theme-toggle .icon-moon {display:block;}
+
+        /* Article Hero */
+        .page-hero { max-width: 800px; margin: 0 auto; padding: 60px 24px 40px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--magenta); margin-bottom: 24px; font-weight: 600; }
+        .back-link:hover { color: var(--violet); }
+        .page-hero-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; color: var(--ink); }
+        .article-lede { font-size: 1.15rem; color: var(--ink-soft); font-weight: 500; margin-bottom: 30px; line-height: 1.6; }
+        
+        /* Author Info */
+        .author-info { display: flex; align-items: center; gap: 15px; padding-top: 20px; border-top: 1px solid var(--line); }
+        .avatar { width: 44px; height: 44px; background: linear-gradient(135deg, var(--magenta), var(--amber)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-family: var(--font-mono); }
+        .author-details .name { font-weight: 600; color: var(--ink); display: block; font-size: 0.95rem; }
+        .author-details .date { color: var(--muted); font-size: 0.8rem; font-family: var(--font-mono); display: block; }
+
+        /* Article Content */
+        .article-body { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; font-size: 1.05rem; }
+        .article-body h2 { margin: 50px 0 20px; font-size: 1.8rem; color: var(--ink); }
+        .article-body h3 { margin: 40px 0 15px; font-size: 1.35rem; color: var(--ink); }
+        .article-body p { margin-bottom: 24px; color: var(--muted); }
+        .article-body ul { margin: 0 0 24px; padding-left: 20px; color: var(--muted); }
+        .article-body ul li { margin-bottom: 10px; line-height: 1.7; }
+        .article-body blockquote { margin: 30px 0; padding: 20px 24px; background: var(--paper-tint); border-left: 4px solid var(--violet); border-radius: 0 8px 8px 0; font-family: var(--font-accent); font-size: 1.15rem; color: var(--ink); font-style: italic; }
+        .math-formula { display: block; margin: 20px 0; padding: 15px; background: var(--paper-tint); border-radius: 8px; font-family: var(--font-mono); font-size: 1rem; color: var(--ink); text-align: center; }
+
+        /* Footer */
+        .site-footer { background: var(--navy-fixed); color: #F0D6E4; padding: 64px 24px 30px; }
+        .footer-inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
+        .footer-brand h3 { color: #fff; font-family: var(--font-display); font-size: 1.1rem; margin-top: 4px;}
+        .footer-brand p { color: #F0D6E4; margin: 12px 0 2px; font-family: var(--font-display); font-size: 1.1rem; }
+        .footer-brand .muted { color: #B08094; font-size: 0.82rem; font-family: var(--font-body); }
+        .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 360px; }
+        .footer-links h4 { color: #fff; font-size: 0.85rem; margin-bottom: 14px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; }
+        .footer-links a { display: block; color: #D9A9C2; font-size: 0.9rem; margin-bottom: 10px; font-family: var(--font-body); }
+        .footer-links a:hover { color: var(--amber); }
+        .footer-copy { text-align: center; color: #D9A9C2; font-size: 0.78rem; margin: 50px 0 0; font-family: var(--font-body); }
+        .bars { display: inline-flex; height: 8px; width: 32px; border-radius: 3px; overflow: hidden; flex-shrink: 0; background: linear-gradient(90deg, var(--magenta) 0 25%, var(--violet) 25% 50%, var(--amber) 50% 75%, var(--teal) 75% 100%); margin-right: 8px; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-wrap">
+            <div class="brand-container">
+                <a href="index.html" class="brand">
+                    <div class="bars bars--sm"></div>
+                    ACM-W BPHC
+                </a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="toggle-knob">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                </button>
+            </div>
+            <div class="nav-right">
+                <ul class="main-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="blogs.html" class="nav-link is-active">Blogs</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-hero">
+        <a href="blogs.html" class="back-link">← Back to all posts</a>
+        <h1 class="page-hero-title">Pioneers of Code: Celebrating Margaret Hamilton and Grace Hopper</h1>
+        <p class="article-lede">Long before software engineering became a global industry, two women helped define what it meant to write code—and changed the way we think about computers.</p>
+        
+        <div class="author-info">
+            <div class="avatar">TD</div>
+            <div class="author-details">
+                <span class="name">Tech Desk</span>
+                <span class="date">4 min read</span>
+            </div>
+        </div>
+    </main>
+
+    <article class="article-body">
+        <p>Today, software is everywhere. It runs our phones, controls spacecraft, powers financial systems, and quietly makes billions of decisions every second. But the discipline we now call software engineering didn't always exist.</p>
+        <p>There was a time when programming was considered a highly specialized mathematical task—and when the idea of writing instructions for a computer was still largely experimental.</p>
+        <p>Two women stood at the center of that transformation: Grace Hopper and Margaret Hamilton. They worked in different eras and on very different problems, but both helped establish ideas that remain fundamental to computing today.</p>
+
+        <h2>Grace Hopper: Making Computers Understand Us</h2>
+        <p>In the early days of computing, programming a machine wasn't anything like writing code today. Programmers often had to work extremely close to the hardware, using machine-level instructions that were difficult to write, understand, and modify.</p>
+        <p>Grace Hopper believed computers could do better. Her central idea was surprisingly simple:</p>
+        <blockquote>Why should humans have to speak the computer's language?</blockquote>
+        <p>Hopper was instrumental in developing early compiler technology—the software that translates human-readable programming instructions into forms that a computer can execute. This was revolutionary.</p>
+        <p>Instead of forcing programmers to think entirely in terms of machine instructions, compilers allowed them to work with increasingly human-friendly programming languages. Her work contributed to the development of COBOL, one of the earliest widely used high-level programming languages.</p>
+        <p>The impact went far beyond one language. Hopper helped establish a principle that modern programmers now take for granted:</p>
+        <blockquote>Computers should adapt to humans—not the other way around.</blockquote>
+        <p>Every time you write a high-level programming language and let a compiler translate it into machine instructions, you're working within an idea that pioneers like Hopper helped make possible.</p>
+
+        <h2>Margaret Hamilton: Engineering Software for the Moon</h2>
+        <p>While Hopper was transforming how humans wrote programs, Margaret Hamilton was helping prove that software could be trusted with something much bigger.</p>
+        <p>The year was the 1960s. NASA was preparing for one of the most ambitious engineering projects in history: Putting humans on the Moon.</p>
+        <p>Hamilton led the software team responsible for the Apollo Guidance Computer's onboard flight software. This wasn't software where a crash meant restarting your laptop. A software failure could mean losing astronauts.</p>
+        <p>And the hardware was incredibly limited by modern standards. The Apollo computer had only a tiny fraction of the computational resources available in even the simplest modern devices. Hamilton's team therefore had to design software that was:</p>
+        <ul>
+            <li>Efficient</li>
+            <li>Reliable</li>
+            <li>Predictable</li>
+            <li>Capable of handling unexpected situations</li>
+        </ul>
+        <p>That last requirement became crucial.</p>
+
+        <h3>The Moment Software Proved Its Worth</h3>
+        <p>During the Apollo 11 lunar landing, the guidance computer suddenly became overloaded with tasks. Warnings appeared. The computer was being asked to process more information than it could normally handle.</p>
+        <p>Yet instead of simply failing, the system was designed to prioritize the most important tasks and discard less critical work. The landing continued. Apollo 11 touched down safely.</p>
+        <p>Hamilton's work demonstrated something that would become fundamental to modern software engineering:</p>
+        <blockquote>Good software isn't simply software that works when everything goes according to plan. Good software knows what to do when things go wrong.</blockquote>
+        <p>That principle now appears everywhere—from aircraft control systems to medical devices to autonomous vehicles.</p>
+
+        <h2>Two Pioneers, One Bigger Idea</h2>
+        <p>At first glance, Hopper and Hamilton seem to represent completely different sides of computing. Hopper focused on making programming more accessible and human-readable. Hamilton focused on making software reliable enough for extraordinary engineering challenges.</p>
+        <p>But their contributions share a deeper connection. They both pushed computing away from being a mysterious interaction with machines and toward becoming a genuine engineering discipline.</p>
+        <p>Hopper asked:</p>
+        <blockquote>How can humans communicate more naturally with computers?</blockquote>
+        <p>Hamilton's work asked:</p>
+        <blockquote>How can we make those instructions reliable enough to trust with people's lives?</blockquote>
+        <p>Those questions still define software engineering today.</p>
+
+        <h2>Why Their Stories Still Matter</h2>
+        <p>Modern programmers work with powerful languages, sophisticated development environments, cloud computing, artificial intelligence, and hardware billions of times faster than the computers of the 1960s.</p>
+        <p>But many of the fundamental challenges haven't disappeared. We still need to: Write understandable code. Build systems that handle unexpected failures. Design software around limited resources. Test what happens when things go wrong. Create abstractions that allow humans to work with increasingly complex machines.</p>
+        <p>In other words, the technology has changed dramatically. The engineering principles haven't.</p>
+
+        <h2>Beyond Being "Women in Computing"</h2>
+        <p>It is easy to tell the stories of Hopper and Hamilton simply as stories about women succeeding in a male-dominated field. That context matters. But reducing their achievements to that alone misses something important.</p>
+        <p>They weren't merely participants in computing history. They helped shape the field itself.</p>
+        <p>Hopper helped transform programming from low-level machine instructions into something closer to a human-readable discipline. Hamilton helped establish software as a serious engineering field where reliability, testing, fault tolerance, and system design mattered just as much as writing code.</p>
+        <p>Their legacy isn't confined to a history textbook. It exists every time a compiler translates code. Every time software recovers from an unexpected failure. Every time engineers design a system with failure in mind. And every time we ask a machine to do something that once seemed impossible.</p>
+
+        <h2>The Code We Inherited</h2>
+        <p>Technology moves incredibly quickly. Programming languages become obsolete. Hardware gets replaced. Entire industries transform within a decade.</p>
+        <p>But great engineering ideas survive. Grace Hopper's vision helped make computers easier for humans to program. Margaret Hamilton's work helped demonstrate that software could be engineered with the same seriousness as any physical system.</p>
+        <p>Together, their stories remind us that computing wasn't built only by inventing faster machines. It was built by people who fundamentally changed how humans and machines work together.</p>
+        <p>And every line of code we write today stands, in some small way, on foundations they helped build.</p>
+    </article>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3><div class="bars bars--xs"></div>ACM-W BPHC</h3>
+                <p>Empowering Women in Computing</p>
+                <div class="muted">BITS Pilani, Hyderabad Campus</div>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Navigation</h4>
+                    <a href="index.html">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Events</a>
+                    <a href="blogs.html">Blogs</a>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 ACM-W BITS Pilani Hyderabad Campus.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('acmw-theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('acmw-theme', 'dark');
+            }
+        }
+    </script>
+</body>
+</html>
