@@ -16,24 +16,45 @@
    section with id="page-X" when clicked. If it also has
    [data-anchor="Y"], the page scrolls to id="Y" afterwards
    (used for the Domains nav link -> #domains section).
+
+   History handling: renderPage() only updates the DOM.
+   showPage() additionally pushes a new history entry, so
+   clicking through tabs builds real back/forward history.
+   The initial page load uses replaceState (not pushState)
+   so it doesn't add an extra entry — that makes "home" the
+   natural floor you land on when repeatedly pressing back.
+   A popstate listener re-renders the correct page whenever
+   the user uses the browser's back/forward buttons.
    --------------------------------------------------- */
 const pages = document.querySelectorAll(".page");
 const pageLinks = document.querySelectorAll("[data-page]");
 
-function showPage(id, anchor){
+function renderPage(id, anchor){
   if(!document.getElementById("page-" + id)) id = "home";
   pages.forEach(p => p.classList.toggle("is-active", p.id === "page-" + id));
   pageLinks.forEach(a => {
     a.classList.toggle("is-active", a.dataset.page === id && !a.dataset.anchor);
   });
   window.scrollTo({top:0, behavior:"instant"});
-  history.replaceState(null, "", "#" + id);
   if(anchor){
     const el = document.getElementById(anchor);
     if(el) requestAnimationFrame(() => el.scrollIntoView({behavior:"smooth", block:"start"}));
   }
   if(id === "about") replayAboutAnimations();
 }
+
+function showPage(id, anchor){
+  if(!document.getElementById("page-" + id)) id = "home";
+  renderPage(id, anchor);
+  history.pushState({page: id}, "", "#" + id);
+}
+
+// Fires on back/forward navigation — re-renders WITHOUT pushing a new
+// history entry (that would create an infinite loop of entries).
+window.addEventListener("popstate", (e) => {
+  const id = (e.state && e.state.page) || location.hash.replace("#", "") || "home";
+  renderPage(id);
+});
 
 /* Re-plays the fade/slide-in entrance for every animated element on the
    About page each time it's opened (rather than only the first time it
@@ -60,13 +81,16 @@ document.addEventListener("click", (e) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const hash = location.hash.replace("#", "") || "home";
+  let id = "home", anchor = null;
   if(document.getElementById("page-" + hash)){
-    showPage(hash);
+    id = hash;
   } else if(document.getElementById(hash)){
-    showPage("home", hash);
-  } else {
-    showPage("home");
+    anchor = hash;
   }
+  renderPage(id, anchor);
+  // replaceState (not pushState) on initial load so this doesn't create
+  // an extra history entry — this page becomes the natural bottom of the stack.
+  history.replaceState({page: id}, "", "#" + id);
 });
 
 /* ---------------------------------------------------
