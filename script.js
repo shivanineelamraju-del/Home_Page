@@ -229,17 +229,32 @@ if("IntersectionObserver" in window){
 
 /* ---------------------------------------------------
    4. EVENTS — calendar + day detail
+   Events can be single-day ({year,month,day}) or span a
+   range by additionally providing endYear/endMonth/endDay
+   (endYear/endMonth default to the start year/month if
+   omitted, so a same-year/same-month range only needs
+   endDay). eventsOn() below treats any day within
+   [start, end] as "on" that event, so the calendar dot
+   and day-detail panel light up for every day in the range.
    --------------------------------------------------- */
 const EVENTS = [
   {"year": 2026, "month": 10, "day": 23, "title": "ATMOS 2026", "type": "Fest", "desc": "Chapter's technical fest — October 23–25, classwork suspended."},
-  {"tba": true, "title": "RAF Orientation", "type": "Event", "desc": "Second/Third week of August — TBA"},
-  {"tba": true, "title": "Codeflix", "type": "Event", "desc": "TBA"}
+  {"year": 2026, "month": 8, "day": 24, "endYear": 2026, "endMonth": 9, "endDay": 7, "title": "Inductions", "type": "Event", "desc": "Chapter inductions run from August 24th to September 7th."},
+  {"year": 2026, "month": 9, "day": 20, "title": "Codeflix", "type": "Event", "desc": "An evening of movies and code — details TBA."}
 ];
 const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 let calYear = 2026, calMonth = 10; // 1-indexed month to match EVENTS data
 
 function eventsOn(year, month, day){
-  return EVENTS.filter(e => e.year === year && e.month === month && e.day === day);
+  const target = new Date(year, month-1, day);
+  return EVENTS.filter(e => {
+    if(e.tba) return false;
+    const start = new Date(e.year, e.month-1, e.day);
+    const end = e.endDay
+      ? new Date(e.endYear || e.year, (e.endMonth || e.month)-1, e.endDay)
+      : start;
+    return target >= start && target <= end;
+  });
 }
 
 function renderCalendar(){
@@ -297,8 +312,16 @@ function renderUpcomingEvents(){
 
   const dated = EVENTS
     .filter(e => !e.tba)
-    .map(e => ({...e, dateObj: new Date(e.year, e.month-1, e.day)}))
-    .filter(e => e.dateObj >= today)
+    .map(e => ({
+      ...e,
+      dateObj: new Date(e.year, e.month-1, e.day),
+      // for ranged events, treat the event as "upcoming" until the END
+      // date has passed, not just the start date
+      endDateObj: e.endDay
+        ? new Date(e.endYear || e.year, (e.endMonth || e.month)-1, e.endDay)
+        : new Date(e.year, e.month-1, e.day)
+    }))
+    .filter(e => e.endDateObj >= today)
     .sort((a,b) => a.dateObj - b.dateObj);
 
   const tba = EVENTS.filter(e => e.tba);
@@ -309,7 +332,9 @@ function renderUpcomingEvents(){
     "<div class='event-card reveal is-visible'>" +
       "<div class='event-date'>" + (e.tba
         ? "<span class='d'>TBA</span>"
-        : "<span class='d'>" + e.day + "</span><span class='m'>" + MONTH_NAMES[e.month-1].slice(0,3) + "</span>") +
+        : "<span class='d'>" + e.day + (e.endDay ? "–" + e.endDay : "") + "</span><span class='m'>" +
+          MONTH_NAMES[e.month-1].slice(0,3) + (e.endMonth && e.endMonth !== e.month ? "–" + MONTH_NAMES[e.endMonth-1].slice(0,3) : "") +
+          "</span>") +
       "</div>" +
       "<div>" +
         "<h4>" + e.title + "</h4>" +
